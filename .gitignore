@@ -1,0 +1,26 @@
+.DS_Store
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+.claude/launch.json
+.codex/
+node_modules/
+__pycache__/
+*.pyc
+.nano-banana-config.json
+notes-config.json
+
+# sync_gslides.py — manifest + per-slide JSON are committed; binaries are not
+source/deck.pptx
+source/deck.pptx.tmp
+source/media/
+
+# fleet_client.py — local LLM provider config (copy from tools/providers.json.example)
+tools/providers.json
+
+# deck import/roundtrip tool outputs — regenerated on demand
+# (media/ is NOT ignored in this talk fork: it holds the talk's own images and video)
+tools/imported-*.json
+tools/palette-*.css
