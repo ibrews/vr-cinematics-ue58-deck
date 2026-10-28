@@ -24,5 +24,5 @@
   [].forEach.call(document.querySelectorAll('*'),function(el){ATTR.forEach(function(a){var v=el.getAttribute(a);if(v){var r=recolor(v);if(r!==v)el.setAttribute(a,r);}});});
   if(L.stripGlow){var glow={};[].forEach.call(document.querySelectorAll('filter'),function(f){if(f.querySelector('feGaussianBlur,feDropShadow'))glow[f.id]=1;});
     [].forEach.call(document.querySelectorAll('[filter]'),function(el){var m=/url\(#([^)]+)\)/.exec(el.getAttribute('filter'));if(m&&glow[m[1]])el.removeAttribute('filter');});}
-  var ln=document.createElement('link');ln.rel='stylesheet';ln.href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Big+Shoulders+Display:wght@100..900&family=Libre+Franklin:wght@300..800&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Jost:wght@300..800&family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Alfa+Slab+One&display=swap";document.head.appendChild(ln);
+  // Use installed/local faces and CSS system fallbacks; never fetch remote fonts.
 })();
