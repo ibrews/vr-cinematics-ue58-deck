@@ -7,25 +7,13 @@
   "problemSlides": [],
   "unexpectedErrors": [],
   "unexpectedFailedRequests": [],
-  "expectedNoise": [
+  "expectedNoise": [],
+  "expectedNoiseAbsent": [
     {
-      "line": "console: Failed to load resource: the server responded with a status of 404 (File not found) @ http://127.0.0.1:8750/notes-config.json",
-      "expected": "notes-config-404"
-    },
-    {
-      "line": "console: Failed to load resource: the server responded with a status of 404 (File not found) @ http://127.0.0.1:8750/notes-config.json",
-      "expected": "notes-config-404"
-    },
-    {
-      "line": "http://127.0.0.1:8750/notes-config.json :: HTTP 404",
-      "expected": "notes-config-404"
-    },
-    {
-      "line": "http://127.0.0.1:8750/notes-config.json :: HTTP 404",
-      "expected": "notes-config-404"
+      "id": "notes-config-404",
+      "why": "Optional presenter-sync config, gitignored by design. Absent => local-only notes mode (HANDOFF_PROMPT.md, tools/SETUP_NOTES_SYNC.md). The 404 is the feature detection."
     }
   ],
-  "expectedNoiseAbsent": [],
   "ytLoadedAtEnd": 0,
   "steps": {
     "slidesWithSteps": 3,
@@ -63,6 +51,6 @@
     "broken": []
   },
   "videosChecked": 8,
-  "source_html_sha256": "f4a3e00b7c614f32e6e3df01260f59a000968aee7b136ff642271db98dff58ed",
+  "source_html_sha256": "6f913bbed9b0fbd90e09a0516e17519fdddc75f24c9845c07e6d2c6f1c6af321",
   "reviewed_contact_sheets": 6
 }
