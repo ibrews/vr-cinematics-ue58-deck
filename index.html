@@ -50,7 +50,7 @@
    ======================================================================= */
 const PITCH = /* PITCH-JSON START */
 {
- "default_look": "noir",
+ "default_look": "cyanotype",
  "event": "Alex Coulombe Presents &middot; 2026-10-28 &middot; 10:00–12:00 ET",
  "event_plain": "VR Cinematics for UE 5.8, Alex Coulombe Presents live class, Wed Oct 28, 2026",
  "speaker": "Alex Coulombe",
@@ -4889,7 +4889,7 @@ updateHUD();
 // ── Spatial Deck looks runtime (tools/apply_look.py) ──
 (function(){
   const LOOKS=["noir", "atlas", "bauhaus", "broadside", "cyanotype", "folio", "gallery", "house", "memo", "riso", "sheet", "swiss", "transit"];const P=new URLSearchParams(location.search);
-  let look=P.get('look')||document.body.dataset.look||window.SD_LOOK||'noir';if(!LOOKS.includes(look))look='noir';
+  let look=P.get('look')||document.body.dataset.look||window.SD_LOOK||'cyanotype';if(!LOOKS.includes(look))look='noir';
   document.body.dataset.look=look;window.SD_ACTIVE_LOOK=look;
   // chrome (independent of the look): full = running frame, counter, wordmark and section kickers on every slide;
   // quiet = none of that on content slides, wordmark only on cover and close; none = chapter cards lose their kicker too
