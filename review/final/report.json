@@ -51,6 +51,7 @@
     "broken": []
   },
   "videosChecked": 8,
-  "source_html_sha256": "6f913bbed9b0fbd90e09a0516e17519fdddc75f24c9845c07e6d2c6f1c6af321",
+  "source_html_sha256": "13a8d1c3806620ed2d7564157034f35f54ee0d92b3e0bc9df3a7228bf117d4e8",
+  "default_look": "cyanotype",
   "reviewed_contact_sheets": 6
 }
