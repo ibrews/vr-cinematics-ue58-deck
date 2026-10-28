@@ -43,7 +43,7 @@
       "intro": [
         "cold-open"
       ],
-      "cover_spoken": "Welcome. Alex teaches live, 10:00–12:00 ET. We will use recorded video first; each optional live demo has a machine and a click path. Ask questions in chat. The two breaks are 10:45 and 11:25 ET.",
+      "cover_spoken": "Welcome. Alex teaches live, 10:00–12:00 ET. We will use recorded video first; each optional live demo has a machine and a click path. Ask questions in chat. The two breaks are 10:45 and 11:25 ET. The two-hour class keeps the core ACCVR video segment; extended camera history remains in Talk B.",
       "acts": [
         {
           "year": "PART I",
@@ -103,19 +103,11 @@
           "accent": "purple",
           "lesson": "lesson-6",
           "cases": [
-            "c-timeline",
-            "c-magiccam",
-            "c-damp",
-            "c-livestream",
             "c-replay-video",
-            "c-replay-gotchas",
-            "c-preroll",
             "c-cinematographer",
             "c-angle-video",
-            "c-working-cut",
-            "c-title-card",
-            "c-vcam",
             "c-trailer",
+            "c-working-cut",
             "c-lessons"
           ]
         },
@@ -800,7 +792,8 @@
             "alt": "Fezziwig’s party in A Christmas Carol VR"
           }
         ]
-      }
+      },
+      "parked": "Extended camera history, available in Talk B (?talk=b). Omitted from the two-hour class to preserve practice and Q&A."
     },
     {
       "id": "c-magiccam",
@@ -818,7 +811,8 @@
         "Two-shot compositions: “Character A on Left, Character B on Right”",
         "Height comes off a MetaHuman face socket, so the framing follows the performer"
       ],
-      "notes": "CLASS CLOCK: 11:46–11:47 ET. The 2023 camera Blueprint is called BP_MagicCamera. 601 nodes. Keys 0 to 9 and Alt combinations call SetCam0 through SetCam13, and PageUp and PageDown cycle through them. Every preset calls one macro, CamSet, with a struct: a height offset, a distance, a rotation, which performer to look at, which performer to snap to, left and right axis sockets, a socket to look at, a socket to offset from, and a look-at offset. The sockets are MetaHuman face sockets such as FACIAL_C_NoseTip, which is how a camera framed for a short performer stays framed for a tall one. The comment on the macro says Character A on the left, Character B on the right: these are two-shot compositions. The lesson for your project: make the shot a data structure, and have the key press just select one. The struct field list is exact; the card's wording of each field is a paraphrase of the Blueprint's pin names. Read from Alex's pasted T3D export with the blueprint-reader, not from the live project."
+      "notes": "CLASS CLOCK: 11:46–11:47 ET. The 2023 camera Blueprint is called BP_MagicCamera. 601 nodes. Keys 0 to 9 and Alt combinations call SetCam0 through SetCam13, and PageUp and PageDown cycle through them. Every preset calls one macro, CamSet, with a struct: a height offset, a distance, a rotation, which performer to look at, which performer to snap to, left and right axis sockets, a socket to look at, a socket to offset from, and a look-at offset. The sockets are MetaHuman face sockets such as FACIAL_C_NoseTip, which is how a camera framed for a short performer stays framed for a tall one. The comment on the macro says Character A on the left, Character B on the right: these are two-shot compositions. The lesson for your project: make the shot a data structure, and have the key press just select one. The struct field list is exact; the card's wording of each field is a paraphrase of the Blueprint's pin names. Read from Alex's pasted T3D export with the blueprint-reader, not from the live project.",
+      "parked": "Extended camera history, available in Talk B (?talk=b). Omitted from the two-hour class to preserve practice and Q&A."
     },
     {
       "id": "c-damp",
@@ -836,7 +830,8 @@
         "Distance and height scale with the performer’s Z scale × 0.8",
         "A hidden performer is swapped for an invisible “dummy Marley head”, so a camera never frames an empty spot"
       ],
-      "notes": "CLASS CLOCK: 11:47–11:48 ET. Three details from the same Blueprint that are worth stealing. A damped follow with toggles for distance damping and look-at, where a damping value of zero is a hard cut. On a camera switch it waits 0.2 seconds and then sets the actual damping equal to the target, so the new shot doesn't glide in from the old one. Distance and height are scaled by the performer's Z scale times 0.8. And a hidden performer is swapped for an invisible dummy Marley head, so a preset that frames a character who is currently offstage still has something to frame. The 2026 notes list the same guard as a port worth making: jump and preset targets should skip hidden characters."
+      "notes": "CLASS CLOCK: 11:47–11:48 ET. Three details from the same Blueprint that are worth stealing. A damped follow with toggles for distance damping and look-at, where a damping value of zero is a hard cut. On a camera switch it waits 0.2 seconds and then sets the actual damping equal to the target, so the new shot doesn't glide in from the old one. Distance and height are scaled by the performer's Z scale times 0.8. And a hidden performer is swapped for an invisible dummy Marley head, so a preset that frames a character who is currently offstage still has something to frame. The 2026 notes list the same guard as a port worth making: jump and preset targets should skip hidden characters.",
+      "parked": "Extended camera history, available in Talk B (?talk=b). Omitted from the two-hour class to preserve practice and Q&A."
     },
     {
       "id": "c-livestream",
@@ -855,7 +850,8 @@
         "VCam for Unreal Engine, and OBS for recording",
         "A custom command toggles audience names on and off"
       ],
-      "notes": "CLASS CLOCK: 11:48–11:49 ET. For the final December 2025 run we livestreamed it. A human cinematographer directed the stream. Alex captured supplementary footage and documentation on a separate path alongside the stream. The tools, per Alex's December 21, 2025 walkthrough video: cameras generated procedurally for specific characters, the virtual camera system, OBS for recording, and a custom console command that toggles audience member names, so the stream can show a name or not. He also notes the platform can capture and replay audience interactions, which isn't common in other platforms. ALEX TO CONFIRM: this slide is built from the one-line summary of that video in the knowledge base, not from the project; confirm which cameras were procedural and what 'supplementary footage' means before teaching it as a recipe."
+      "notes": "CLASS CLOCK: 11:48–11:49 ET. For the final December 2025 run we livestreamed it. A human cinematographer directed the stream. Alex captured supplementary footage and documentation on a separate path alongside the stream. The tools, per Alex's December 21, 2025 walkthrough video: cameras generated procedurally for specific characters, the virtual camera system, OBS for recording, and a custom console command that toggles audience member names, so the stream can show a name or not. He also notes the platform can capture and replay audience interactions, which isn't common in other platforms. ALEX TO CONFIRM: this slide is built from the one-line summary of that video in the knowledge base, not from the project; confirm which cameras were procedural and what 'supplementary footage' means before teaching it as a recipe.",
+      "parked": "Extended camera history, available in Talk B (?talk=b). Omitted from the two-hour class to preserve practice and Q&A."
     },
     {
       "id": "c-replay-video",
@@ -870,7 +866,7 @@
       "muted": true,
       "alt": "A recorded performance played back in the replay system: Marley’s ghost confronts Scrooge, seen from a free camera with the replay controls on screen.",
       "credit": "Replay recording of a performance &middot; A Christmas Carol VR &middot; Yu-Jun Yeh",
-      "notes": "CLASS CLOCK: 11:49–11:50 ET. Here is the replay system. We recorded the performances as data, using Unreal's replay recording of the live session: the motion capture, the cues and the spatial audio, not video. That means the camera is free after the fact. Scrub the timeline, fly anywhere, and see the controls on screen. Everything after this slide is about what it took to make a free camera in a replay actually reliable."
+      "notes": "CLASS CLOCK: 11:45–11:46 ET. Here is the replay system. We recorded the performances as data, using Unreal's replay recording of the live session: the motion capture, the cues and the spatial audio, not video. That means the camera is free after the fact. Scrub the timeline, fly anywhere, and see the controls on screen. Everything after this slide is about what it took to make a free camera in a replay actually reliable."
     },
     {
       "id": "c-replay-gotchas",
@@ -888,7 +884,8 @@
         "Seek cooldown: time it from the completion callback, not the start",
         "Pause by setting a world pauser: demo time and audio stop, the camera keeps flying"
       ],
-      "notes": "CLASS CLOCK: 11:50–11:51 ET. Four things any project that plays back DemoNetDriver replays will hit; we found them in the 2024 project on UE 5.4. One: on the first bunch, RepNotifies run before BeginPlay, so anything BeginPlay creates, like a dynamic material or a widget, isn't there yet. The symptom was every avatar the same green with no name until you skipped once. Fix: re-apply the replicated values at the end of BeginPlay. Two: a replay viewer is a client, so a live-session watchdog that watches a server heartbeat stalls during a seek or a long pause, and then calls JoinSession and kicks you out of the replay. 'Pressing skip too fast crashes it' was really one seek. Fix: gate every reconnect on is-playing-replay. Three: don't start another seek until about 30 frames and three-quarters of a second after the previous seek's completion callback. Four: there is no demopause command in 5.4; setting any PlayerState as the world pauser stops demo time and sound while the spectator camera keeps flying. These are from our KB technique note and verified in PIE on the 2024 project; your engine version and project may differ."
+      "notes": "CLASS CLOCK: 11:50–11:51 ET. Four things any project that plays back DemoNetDriver replays will hit; we found them in the 2024 project on UE 5.4. One: on the first bunch, RepNotifies run before BeginPlay, so anything BeginPlay creates, like a dynamic material or a widget, isn't there yet. The symptom was every avatar the same green with no name until you skipped once. Fix: re-apply the replicated values at the end of BeginPlay. Two: a replay viewer is a client, so a live-session watchdog that watches a server heartbeat stalls during a seek or a long pause, and then calls JoinSession and kicks you out of the replay. 'Pressing skip too fast crashes it' was really one seek. Fix: gate every reconnect on is-playing-replay. Three: don't start another seek until about 30 frames and three-quarters of a second after the previous seek's completion callback. Four: there is no demopause command in 5.4; setting any PlayerState as the world pauser stops demo time and sound while the spectator camera keeps flying. These are from our KB technique note and verified in PIE on the 2024 project; your engine version and project may differ.",
+      "parked": "Extended camera history, available in Talk B (?talk=b). Omitted from the two-hour class to preserve practice and Q&A."
     },
     {
       "id": "c-preroll",
@@ -898,7 +895,8 @@
       "sec": 35,
       "layout": "big",
       "bigText": "A seek can bring back\na scene that's gone.",
-      "notes": "CLASS CLOCK: 11:51–11:51 ET. A beautiful one. When we sought into a beat where Dickens's parlor had already vanished, the replay restored the streamed-out parlor for about four seconds and replayed its dissolve, in the middle of someone's shot. Our fix is unglamorous: a five second pre-roll under a black card. The cut starts, you see black, the world settles, then the shot begins. In this show, seek restoration needed a settling interval. Check the scene after each seek; the five-second pre-roll is a project-specific workaround."
+      "notes": "CLASS CLOCK: 11:51–11:51 ET. A beautiful one. When we sought into a beat where Dickens's parlor had already vanished, the replay restored the streamed-out parlor for about four seconds and replayed its dissolve, in the middle of someone's shot. Our fix is unglamorous: a five second pre-roll under a black card. The cut starts, you see black, the world settles, then the shot begins. In this show, seek restoration needed a settling interval. Check the scene after each seek; the five-second pre-roll is a project-specific workaround.",
+      "parked": "Extended camera history, available in Talk B (?talk=b). Omitted from the two-hour class to preserve practice and Q&A."
     },
     {
       "id": "c-cinematographer",
@@ -916,7 +914,7 @@
         "A whole-show working cut: scenes named from the show’s act and cue, credits, crash-safe saves, export",
         "Weak edit, cut and loop, to review a cut in place"
       ],
-      "notes": "CLASS CLOCK: 11:51–11:52 ET. Going further: the ACCVR24 cinematographer prototype automates camera and cut decisions students can make by hand in Sequencer. Existing r853 receipt documents working lenses, shot add/replace, credits, crash-safe saves and keyboard regression; physical pad and audio continuity still need a person. It is UE 5.4.4 reference material, not proof of UE 5.8 compatibility. LIVE OPTION: Lenovo — only if the current ACCVR24 working-cut package has been located and smoke-tested, open CONTROLS.html beside the package; F2 sets Shot by, hold Up adds a shot, Ctrl+Home plays the working cut. Do not substitute the older ACCVR-52 project."
+      "notes": "CLASS CLOCK: 11:46–11:47 ET. Going further: the ACCVR24 cinematographer prototype automates camera and cut decisions students can make by hand in Sequencer. Existing r853 receipt documents working lenses, shot add/replace, credits, crash-safe saves and keyboard regression; physical pad and audio continuity still need a person. It is UE 5.4.4 reference material, not proof of UE 5.8 compatibility. LIVE OPTION: Lenovo — only if the current ACCVR24 working-cut package has been located and smoke-tested, open CONTROLS.html beside the package; F2 sets Shot by, hold Up adds a shot, Ctrl+Home plays the working cut. Do not substitute the older ACCVR-52 project."
     },
     {
       "id": "c-working-cut",
@@ -965,7 +963,7 @@
           "letterbox": true
         }
       ],
-      "notes": "CLASS CLOCK: 11:52–11:53 ET. This is the whole system in four stops. The recording. You are the camera operator and pick a lens. Your shot, saved anywhere in the show and credited to you. And everyone's shots add up to a new cut of the whole show, played back as a film in 2.39. This was built for the MIA market in Rome in October 2026. Say prototype. The four stills are existing Carol images, not frames from the build. ALEX TO CONFIRM: match what you say to what you can demo today.",
+      "notes": "CLASS CLOCK: 11:52–11:54 ET. This is the whole system in four stops. The recording. You are the camera operator and pick a lens. Your shot, saved anywhere in the show and credited to you. And everyone's shots add up to a new cut of the whole show, played back as a film in 2.39. This was built for the MIA market in Rome in October 2026. Say prototype. The four stills are existing Carol images, not frames from the build. ALEX TO CONFIRM: match what you say to what you can demo today.",
       "use": "pmre/working-cut",
       "props": {
         "title": "Cut Your Own Version of the Show",
@@ -1027,7 +1025,8 @@
         "Credit “Shot by”, not “DP”: visitors frame and cut, they don’t light",
         "The version goes up per export, not per edit"
       ],
-      "notes": "CLASS CLOCK: 11:53–11:53 ET. A small decision that took research and is worth showing, because it's the same thinking as naming a render. Editing stages run assembly, rough cut, fine cut, picture lock; an unfinished film shown to an audience is a work-in-progress screening; a delivery head slate carries the title, version, date and running time. Director's Cut would have claimed the director made it. For the credit: a DP sets the look and runs camera and lighting crews, a camera operator frames, an editor decides when to cut. Visitors frame, choose the lens, and choose the cuts, but light nothing, and many people don't know the abbreviation DP. So the on-screen credit is Shot by, followed by names. The card shown is the template; the fields in angle brackets are filled per cut. Decision record: 2026-10-22."
+      "notes": "CLASS CLOCK: 11:53–11:53 ET. A small decision that took research and is worth showing, because it's the same thinking as naming a render. Editing stages run assembly, rough cut, fine cut, picture lock; an unfinished film shown to an audience is a work-in-progress screening; a delivery head slate carries the title, version, date and running time. Director's Cut would have claimed the director made it. For the credit: a DP sets the look and runs camera and lighting crews, a camera operator frames, an editor decides when to cut. Visitors frame, choose the lens, and choose the cuts, but light nothing, and many people don't know the abbreviation DP. So the on-screen credit is Shot by, followed by names. The card shown is the template; the fields in angle brackets are filled per cut. Decision record: 2026-10-22.",
+      "parked": "Extended camera history, available in Talk B (?talk=b). Omitted from the two-hour class to preserve practice and Q&A."
     },
     {
       "id": "c-vcam",
@@ -1037,7 +1036,8 @@
       "sec": 45,
       "layout": "big",
       "bigText": "VCam is editor-only\nin UE 5.4.4.",
-      "notes": "CLASS CLOCK: 11:53–11:54 ET. We wanted a phone-as-camera feel in the cut. Findings: UE 5.1 moved the VirtualCamera plugin to Runtime, but the 5.4 docs still call it the in-editor Virtual Camera system; Live Link in a packaged game needs the messaging flag and Shipping is unsupported; and an Epic staff reply on a 2024 forum thread confirmed that enabling a VCam actor crashes a packaged build because it loads editor-only code. So in the project, V toggles the level's VCam component, the cinematographer plugin reads it by reflection with no module dependency, and packaged builds are unaffected and use the normal camera. That is the 5.4.4 answer. ALEX TO CONFIRM: not re-tested on 5.8, which is what this class uses; check before telling students it works or doesn't."
+      "notes": "CLASS CLOCK: 11:53–11:54 ET. We wanted a phone-as-camera feel in the cut. Findings: UE 5.1 moved the VirtualCamera plugin to Runtime, but the 5.4 docs still call it the in-editor Virtual Camera system; Live Link in a packaged game needs the messaging flag and Shipping is unsupported; and an Epic staff reply on a 2024 forum thread confirmed that enabling a VCam actor crashes a packaged build because it loads editor-only code. So in the project, V toggles the level's VCam component, the cinematographer plugin reads it by reflection with no module dependency, and packaged builds are unaffected and use the normal camera. That is the 5.4.4 answer. ALEX TO CONFIRM: not re-tested on 5.8, which is what this class uses; check before telling students it works or doesn't.",
+      "parked": "Extended camera history, available in Talk B (?talk=b). Omitted from the two-hour class to preserve practice and Q&A."
     },
     {
       "id": "c-lessons",
@@ -1100,7 +1100,7 @@
       "poster": "media/carol/accvr-working-cut-poster.jpg",
       "alt": "Angle selection and the working cut from the real packaged ACCVR24 cinematographer prototype.",
       "credit": "A Christmas Carol VR, Alex Coulombe Presents; live performers Ari Tarr and Debbie Deer",
-      "notes": "CLASS CLOCK: 11:51–11:53 ET. Play this recorded clip and explain the real keyboard actions: pause and find an angle, pick a lens, hold Up to keep the shot, add Shot by credit, then play the assembled working cut. Source: Lenovo G:/SVN/ACCVR24/Tools/MissingShot/trailer, revision 855. This is a 7.8–51.0 second excerpt of that trailer, not a new live capture. LIVE OPTION: Lenovo — package G:/Archives/ACCVR24-2026-10/builds/accvr24-working-cut-r855-win64-development-2026-10-26/Windows/ACCVR24.exe; read CONTROLS.html first, F2 sets credit, hold Up adds shot, Ctrl+Home plays working cut. Use video unless the package has been smoke-tested."
+      "notes": "CLASS CLOCK: 11:47–11:49 ET. Play this recorded clip and explain the real keyboard actions: pause and find an angle, pick a lens, hold Up to keep the shot, add Shot by credit, then play the assembled working cut. Source: Lenovo G:/SVN/ACCVR24/Tools/MissingShot/trailer, revision 855. This is a 7.8–51.0 second excerpt of that trailer, not a new live capture. LIVE OPTION: Lenovo — package G:/Archives/ACCVR24-2026-10/builds/accvr24-working-cut-r855-win64-development-2026-10-26/Windows/ACCVR24.exe; read CONTROLS.html first, F2 sets credit, hold Up adds shot, Ctrl+Home plays working cut. Use video unless the package has been smoke-tested."
     },
     {
       "id": "c-trailer",
@@ -1116,7 +1116,7 @@
       "poster": "media/carol/accvr-working-cut-poster.jpg",
       "alt": "A Christmas Carol VR working-cut trailer from the real packaged ACCVR24 cinematographer prototype.",
       "credit": "A Christmas Carol VR, Alex Coulombe Presents; live performers Ari Tarr and Debbie Deer",
-      "notes": "CLASS CLOCK: 11:53–11:54 ET. Play this recorded clip and explain the real keyboard actions: pause and find an angle, pick a lens, hold Up to keep the shot, add Shot by credit, then play the assembled working cut. Source: Lenovo G:/SVN/ACCVR24/Tools/MissingShot/trailer, revision 855. This is the complete original 56.5-second trailer. Audio is present, but the deck starts muted so Alex can talk over it; reveal video controls and unmute only when desired. LIVE OPTION: Lenovo — package G:/Archives/ACCVR24-2026-10/builds/accvr24-working-cut-r855-win64-development-2026-10-26/Windows/ACCVR24.exe; read CONTROLS.html first, F2 sets credit, hold Up adds shot, Ctrl+Home plays working cut. Use video unless the package has been smoke-tested."
+      "notes": "CLASS CLOCK: 11:49–11:52 ET. Play this recorded clip and explain the real keyboard actions: pause and find an angle, pick a lens, hold Up to keep the shot, add Shot by credit, then play the assembled working cut. Source: Lenovo G:/SVN/ACCVR24/Tools/MissingShot/trailer, revision 855. This is the complete original 56.5-second trailer. Audio is present, but the deck starts muted so Alex can talk over it; reveal video controls and unmute only when desired. LIVE OPTION: Lenovo — package G:/Archives/ACCVR24-2026-10/builds/accvr24-working-cut-r855-win64-development-2026-10-26/Windows/ACCVR24.exe; read CONTROLS.html first, F2 sets credit, hold Up adds shot, Ctrl+Home plays working cut. Use video unless the package has been smoke-tested."
     }
   ]
 }

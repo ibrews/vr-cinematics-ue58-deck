@@ -12,12 +12,12 @@
   },
   "open": "Open MP4 in a player; deck media is relative/local and starts muted. No ZIP needed.",
   "retention": "Preserve class media; no source deletion authorized",
-  "file_count": 7,
-  "byte_count": 68257208,
+  "file_count": 8,
+  "byte_count": 72206281,
   "files": [
     {
       "deck_path": "media/class/uoxr-ai-menu-selection.mp4",
-      "archive_file": "vr-cinematics-uoxr-ai-menu-selection-video-source-or-excerpt-2026-10-28.mp4",
+      "archive_file": "vr-cinematics-uoxr-ai-menu-selection-video-existing-source-2026-10-28.mp4",
       "bytes": 1276326,
       "sha256": "91ccd6ad488a9395e0803e34ea554e97807871272afc7cbf1013357537048226",
       "probe": {
@@ -37,7 +37,7 @@
     },
     {
       "deck_path": "media/class/uoxr-ai-pinch-gestures.mp4",
-      "archive_file": "vr-cinematics-uoxr-ai-pinch-gestures-video-source-or-excerpt-2026-10-28.mp4",
+      "archive_file": "vr-cinematics-uoxr-ai-pinch-gestures-video-existing-source-2026-10-28.mp4",
       "bytes": 1039176,
       "sha256": "1714bc03a061e23bf5adb890ca195ea9d4aa70838121d4d5cd03ae3d9b7d6e83",
       "probe": {
@@ -57,7 +57,7 @@
     },
     {
       "deck_path": "media/class/before_after_pov.mp4",
-      "archive_file": "vr-cinematics-before-after-pov-video-source-or-excerpt-2026-10-28.mp4",
+      "archive_file": "vr-cinematics-before-after-pov-video-existing-source-2026-10-28.mp4",
       "bytes": 6741819,
       "sha256": "e98de1db4e7f9cd25874e68c04374342089911aebbf4ccca4d1c2162a60a44a9",
       "probe": {
@@ -77,7 +77,7 @@
     },
     {
       "deck_path": "media/class/all_cameras.mp4",
-      "archive_file": "vr-cinematics-all-cameras-video-source-or-excerpt-2026-10-28.mp4",
+      "archive_file": "vr-cinematics-all-cameras-video-existing-source-2026-10-28.mp4",
       "bytes": 4953112,
       "sha256": "748f5f7c9e0d52ab0c7663337e58780eb71371ba666b7c61564f307169e2d1b9",
       "probe": {
@@ -97,7 +97,7 @@
     },
     {
       "deck_path": "media/class/edit_final.mp4",
-      "archive_file": "vr-cinematics-edit-final-video-source-or-excerpt-2026-10-28.mp4",
+      "archive_file": "vr-cinematics-edit-final-video-existing-source-2026-10-28.mp4",
       "bytes": 5005026,
       "sha256": "d980e6090aa5d2981a28d1da15355fcdd2a15b5603338f3a76fd778b0cae2fe8",
       "probe": {
@@ -117,7 +117,7 @@
     },
     {
       "deck_path": "media/carol/accvr-angle-selection-working-cut.mp4",
-      "archive_file": "vr-cinematics-accvr-angle-selection-working-cut-video-source-or-excerpt-2026-10-28.mp4",
+      "archive_file": "vr-cinematics-accvr-angle-selection-working-cut-video-trailer-excerpt-2026-10-28.mp4",
       "bytes": 8968767,
       "sha256": "22f7b734b865cf1b710621e620515adcaf1380b04f36815a4f37e639ed76e38a",
       "probe": {
@@ -139,8 +139,8 @@
       }
     },
     {
-      "deck_path": "media/carol/accvr-working-cut-trailer.mp4",
-      "archive_file": "vr-cinematics-accvr-working-cut-trailer-video-source-or-excerpt-2026-10-28.mp4",
+      "deck_path": null,
+      "archive_file": "vr-cinematics-accvr-working-cut-trailer-video-original-svn-r855-2026-10-28.mp4",
       "bytes": 40272982,
       "sha256": "01bf187999d9e554fd1ccf50a5e31523f6ffed0c5bbeeffc8d533b9c167e36ca",
       "probe": {
@@ -159,7 +159,33 @@
         "format": {
           "duration": "56.521333"
         }
+      },
+      "purpose": "byte-exact original SVN trailer, retained separately from the deck derivative"
+    },
+    {
+      "deck_path": "media/carol/accvr-working-cut-trailer.mp4",
+      "archive_file": "vr-cinematics-accvr-working-cut-trailer-video-class-playback-2026-10-28.mp4",
+      "bytes": 3949073,
+      "sha256": "d5ddb5a6f9cff3f9d80fff3ad57733b6ef10719d6abd901015ac363dd07f0a41",
+      "transcode": "original source -> 1280x720 H.264 CRF24, AAC128k, faststart",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1280,
+            "height": 720
+          },
+          {
+            "codec_name": "aac"
+          }
+        ],
+        "format": {
+          "duration": "56.533333"
+        }
       }
     }
-  ]
+  ],
+  "tree_sha256": "f7eae9fa355a3dd2654c92d7dac914d9625e108e8cd86704945e4935a72dbb78"
 }

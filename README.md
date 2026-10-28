@@ -2,7 +2,7 @@
 
 The slides for **VR Cinematics for UE 5.8**, a live class by [Alex Coulombe Presents](https://alexcoulombepresents.com/classes/2026-10-28-vr-cinematics) (Wednesday, October 28, 2026). Record someone playing in VR, stabilize it, re-shoot it from new camera angles, render it, and see how the cameras of *A Christmas Carol VR* were built, from a keyboard-driven Blueprint in 2023 to a visitor-facing cinematographer build in 2026.
 
-**▶ View the deck:** https://ibrews.github.io/vr-cinematics-ue58-deck/ &nbsp;·&nbsp; **Camera case study only (conference cut):** https://ibrews.github.io/vr-cinematics-ue58-deck/?talk=b
+**▶ View the deck:** https://ibrews.github.io/vr-cinematics-ue58-deck/ &nbsp;·&nbsp; **Extended camera history (optional):** https://ibrews.github.io/vr-cinematics-ue58-deck/?talk=b
 
 Built on [Spatial Deck](https://github.com/ibrews/spatial-deck), the single-file HTML presentation framework, on modular framework `14256be`, with reusable camera and timeline modules pulled from the PMRE deck.
 
@@ -48,7 +48,7 @@ Alex teaches 10:00–12:00 ET. The CLASS CLOCK in each slide note includes demon
 
 `talk/pitch.json` owns content, `talk/head.html` owns metadata, and `talk/class.css` owns class styles. `tools/framework.html` pins the unmodified modular framework source; `tools/bake_deck.py` regenerates the runtime and syncs the slide modules. Imported module folders carry `.pulled.json` provenance. The deck uses quiet chrome by default.
 
-Migration review: [all slides and substeps](review/migration/report.json), [contact sheet](review/migration/contact-sheet-0.jpg). The 42-slide framework count includes settings and hidden end markers; the class has 37 content slides, its cover and close.
+Migration review: [all slides and substeps](review/migration/report.json), [contact sheet](review/migration/contact-sheet-0.jpg). The initial migration sweep included 42 framework slides. The later two-hour class cut preserves the longer camera history in Talk B so hands-on capture and rendering retain their time.
 
 ## Talk-over videos
 

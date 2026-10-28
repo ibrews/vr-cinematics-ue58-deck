@@ -24,6 +24,7 @@ s=re.sub(r'<script type="importmap">.*?</script>','<script type="importmap">{"im
 s=re.sub(r'@import url\([^;]+;', '',s,count=1)
 s=s.replace('<div id="brand">Spatial Deck</div>','<div id="brand">Alex Coulombe Presents</div>')
 s=re.sub(r'cov.innerHTML=`.*?`;', 'cov.innerHTML=`<div class="event-tag">${PITCH.event}</div><h1 class="talk-title">${TALK.title.replace(/\\\\n/g,"<br>")}</h1><p class="talk-subtitle">${TALK.subtitle}</p><div class="speaker-card"><div><div class="speaker-name">${PITCH.speaker}</div><div class="speaker-co">${PITCH.company}</div></div></div>`;',s,count=1,flags=re.S)
+s=s.replace('${si+1} / ${SECTIONS.length}', '${SECTIONS.slice(0,si+1).filter(x=>!x.lesson.none).length} / ${SECTIONS.filter(x=>!x.lesson.none).length}')
 # Lessons can be omitted in the cold open section, with a stable case-note index.
 s=s.replace("  const ls=document.createElement('div');ls.className=", "  lessonIdxs[si]=allSlides.length-1;\n  if(!sec.lesson.none){const ls=document.createElement('div');ls.className=",1)
 s=s.replace('deck.appendChild(ls);allSlides.push(ls);lessonIdxs.push(allSlides.length-1);','deck.appendChild(ls);allSlides.push(ls);lessonIdxs[si]=allSlides.length-1;}',1)

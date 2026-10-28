@@ -2,3 +2,5 @@
 body.reduced-motion .slide *{transition:none!important;animation-duration:.001s!important;animation-delay:0s!important}
 .slide.sd-mod-class-compare{display:flex!important;flex-direction:column;justify-content:center;align-items:center;gap:0}
 .layout-big .big-text.big-l2{font-size:calc(4.1*var(--vw))}.layout-big .big-text.big-l3{font-size:calc(3.4*var(--vw))}
+
+.layout-big .big-stack{width:94%;align-items:center}.layout-big .big-text{max-width:none;width:100%}
