@@ -1,0 +1,91 @@
+{
+  "url": "http://127.0.0.1:18751/",
+  "host": "Alexs-MacBook-Pro-3.local",
+  "errors": [],
+  "externalRequests": [],
+  "httpErrors": [],
+  "talks": [
+    {
+      "talk": "a",
+      "slides": 38,
+      "videos": 8
+    },
+    {
+      "talk": "b",
+      "slides": 21,
+      "videos": 3
+    }
+  ],
+  "looks": [
+    "atlas",
+    "bauhaus",
+    "broadside",
+    "cyanotype",
+    "folio",
+    "gallery",
+    "house",
+    "memo",
+    "noir",
+    "riso",
+    "sheet",
+    "swiss",
+    "transit"
+  ],
+  "print": [
+    {
+      "talk": "a",
+      "posters": [
+        {
+          "poster": "media/class/edit_final.jpg",
+          "decoded": true
+        },
+        {
+          "poster": "media/class/before_after_pov.jpg",
+          "decoded": true
+        },
+        {
+          "poster": "media/class/uoxr-ai-menu-selection.jpg",
+          "decoded": true
+        },
+        {
+          "poster": "media/class/all_cameras.jpg",
+          "decoded": true
+        },
+        {
+          "poster": "media/class/edit_final.jpg",
+          "decoded": true
+        },
+        {
+          "poster": "media/video/carol-replay-marley.jpg",
+          "decoded": true
+        },
+        {
+          "poster": "media/carol/accvr-working-cut-poster.jpg",
+          "decoded": true
+        },
+        {
+          "poster": "media/carol/accvr-working-cut-poster.jpg",
+          "decoded": true
+        }
+      ]
+    },
+    {
+      "talk": "b",
+      "posters": [
+        {
+          "poster": "media/video/carol-replay-marley.jpg",
+          "decoded": true
+        },
+        {
+          "poster": "media/carol/accvr-working-cut-poster.jpg",
+          "decoded": true
+        },
+        {
+          "poster": "media/carol/accvr-working-cut-poster.jpg",
+          "decoded": true
+        }
+      ]
+    }
+  ],
+  "verdict": "PASS"
+}

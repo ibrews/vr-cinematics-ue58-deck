@@ -1,0 +1,54 @@
+{
+  "url": "http://127.0.0.1:18751/",
+  "viewport": "1920x1080",
+  "slides": 38,
+  "verdict": "PASS",
+  "failedBecause": [],
+  "problemSlides": [],
+  "unexpectedErrors": [],
+  "unexpectedFailedRequests": [],
+  "expectedNoise": [],
+  "expectedNoiseAbsent": [
+    {
+      "id": "notes-config-404",
+      "why": "Optional presenter-sync config, gitignored by design. Absent => local-only notes mode (HANDOFF_PROMPT.md, tools/SETUP_NOTES_SYNC.md). The 404 is the feature detection."
+    }
+  ],
+  "ytLoadedAtEnd": 0,
+  "steps": {
+    "slidesWithSteps": 3,
+    "substepShots": 10,
+    "contract": [
+      {
+        "i": 5,
+        "mod": "class/compare",
+        "declared": 0,
+        "reachable": 0,
+        "frame": null
+      },
+      {
+        "i": 18,
+        "mod": "class/rigs",
+        "declared": 4,
+        "reachable": 4,
+        "frame": null
+      },
+      {
+        "i": 21,
+        "mod": "pmre/camera-toy",
+        "declared": 3,
+        "reachable": 3,
+        "frame": null
+      },
+      {
+        "i": 31,
+        "mod": "pmre/working-cut",
+        "declared": 3,
+        "reachable": 3,
+        "frame": null
+      }
+    ],
+    "broken": []
+  },
+  "videosChecked": 8
+}
