@@ -58,10 +58,10 @@ Eight embedded clips are now available across the class: the original practice e
 
 Preview all 13 looks in the [look gallery](https://ibrews.github.io/vr-cinematics-ue58-deck/review/looks/). Henry Keyser’s reviewer favorites are memo, swiss, cyanotype and gallery.
 
-In `tools/bake_deck.py`, change exactly this line (currently unchanged noir):
+In `talk/pitch.json`, change exactly this line (currently unchanged noir):
 
-```python
-DEFAULT_LOOK = "noir"  # Change this line, then rebake.
+```json
+"default_look": "noir",
 ```
 
-Replace `noir` with a gallery look ID, run `python3 tools/bake_deck.py`, and commit the bake config and generated `index.html`. A URL such as `?look=memo` previews a look without changing the default.
+Replace `noir` with a gallery look ID, run `python3 tools/bake_deck.py`, and commit `talk/pitch.json` and generated `index.html`. A URL such as `?look=memo` previews a look without changing the default.

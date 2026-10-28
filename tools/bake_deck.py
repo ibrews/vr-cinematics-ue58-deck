@@ -2,7 +2,6 @@
 """Rebuild this talk from pinned modular framework + talk/pitch.json. No network."""
 import json,re,subprocess,sys
 from pathlib import Path
-DEFAULT_LOOK = "noir"  # Change this line, then rebake.
 R=Path(__file__).resolve().parent.parent
 s=(R/'tools/framework.html').read_text();old=(R.parent/'old-deck.html').read_text() if (R.parent/'old-deck.html').exists() else None
 # Branding head is a tracked talk source; framework runtime stays pinned and repeatable.
@@ -38,5 +37,5 @@ s=s.replace('// Navigation',"allSlides.forEach(s=>{if(['bonus','map'].includes(s
 s=s.replace('// 3D Monocle on Bonus slide\n(function(){','// 3D Monocle on Bonus slide\n(function(){return; // class has no bonus monocle',1)
 s=s.replace('</head>','<style>'+ (R/'talk/class.css').read_text()+'</style>\n</head>',1)
 (R/'index.html').write_text(s)
-for args in [['build_pitch.py'],['apply_look.py','--default',DEFAULT_LOOK,'--chrome','quiet'],['slide.py','sync',str(R)],['check_branding.py'],['slide.py','check',str(R)]]:
+for args in [['build_pitch.py'],['apply_look.py','--default',json.loads(p).get('default_look','noir'),'--chrome','quiet'],['slide.py','sync',str(R)],['check_branding.py'],['slide.py','check',str(R)]]:
     subprocess.run([sys.executable,str(R/'tools'/args[0]),*args[1:]],check=True,cwd=R)
