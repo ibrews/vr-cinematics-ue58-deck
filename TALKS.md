@@ -462,7 +462,7 @@ Cut for time or superseded. To restore one, add its id back to a talk's act (or 
 
 **On screen:** Cameras are data. Shots are structs. Credit the operator.
 
-> **Notes:** CLASS CLOCK: 11:54–11:55 ET. The three things to take from five winters of cameras. Cameras are data: whether it's a Blueprint struct, a JSON file of shot slots, or a recorded replay, if the shot is data you can change your mind afterwards. Shots are structs: the key press only selects. And credit the operator: the moment a visitor can make a shot, the title card and the credit become part of the design.
+> **Notes:** CLASS CLOCK: 11:54–11:55 ET. The three things to take from five winters of cameras. Cameras are data: whether it's a Blueprint struct, a JSON file of shot slots, or a recorded replay, if the shot is data you can change your mind afterward. Shots are structs: the key press only selects. And credit the operator: the moment a visitor can make a shot, the title card and the credit become part of the design.
 
 ### `lesson-7`: Homework & Next.
 

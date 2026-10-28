@@ -36,7 +36,7 @@ The slides are anchor points for a live Unreal session; the minute-by-minute run
 2. On the "Same Take, Two Cameras" slide, drag the line to compare the recorded head camera with the stabilized one.
 3. Click through the five rigs on "Five Cameras, One Take".
 4. On "Four Generations of Cameras", click a stop or drag the playhead to move from MagicCam to the 2026 cinematographer build.
-5. Add `?talk=b` to the URL for the 14-slide conference cut of Part VI, then press **N** for speaker notes.
+5. Add `?talk=b` to the URL for the 17-slide conference cut of Part VI (plus the closing slide), then press **N** for speaker notes.
 
 ## Credits
 

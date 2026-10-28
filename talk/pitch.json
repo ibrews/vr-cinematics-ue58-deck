@@ -444,7 +444,7 @@
         {
           "name": "POV, stabilized",
           "media": "media/class/rig-pov.jpg",
-          "alt": "The player point of view after stabilization, a level horizon over a grey stage",
+          "alt": "The player point of view after stabilization, a level horizon over a gray stage",
           "credit": "Class practice take &middot; VR Cinematics kit",
           "points": [
             "The player’s own view",
@@ -507,7 +507,7 @@
           {
             "name": "POV, stabilized",
             "media": "media/class/rig-pov.jpg",
-            "alt": "The player point of view after stabilization, a level horizon over a grey stage",
+            "alt": "The player point of view after stabilization, a level horizon over a gray stage",
             "credit": "Class practice take &middot; VR Cinematics kit",
             "points": [
               "The player’s own view",
@@ -1053,7 +1053,7 @@
       "sec": 45,
       "layout": "big",
       "bigText": "Cameras are data.\nShots are structs.\nCredit the operator.",
-      "notes": "CLASS CLOCK: 11:54–11:55 ET. The three things to take from five winters of cameras. Cameras are data: whether it's a Blueprint struct, a JSON file of shot slots, or a recorded replay, if the shot is data you can change your mind afterwards. Shots are structs: the key press only selects. And credit the operator: the moment a visitor can make a shot, the title card and the credit become part of the design."
+      "notes": "CLASS CLOCK: 11:54–11:55 ET. The three things to take from five winters of cameras. Cameras are data: whether it's a Blueprint struct, a JSON file of shot slots, or a recorded replay, if the shot is data you can change your mind afterward. Shots are structs: the key press only selects. And credit the operator: the moment a visitor can make a shot, the title card and the credit become part of the design."
     },
     {
       "id": "lesson-7",
