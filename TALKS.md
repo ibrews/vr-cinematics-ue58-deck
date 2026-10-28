@@ -118,7 +118,7 @@ Cut for time or superseded. To restore one, add its id back to a talk's act (or 
 *Synthetic practice take • five cameras added afterward*
 *Credit:* Class practice take, re-shot and rendered with the VR Cinematics kit &middot; Alex Coulombe Presents
 
-> **Notes:** CLASS CLOCK: 10:00–10:03 ET. Play the 20-second rendered practice edit. This is a seeded practice take, not headset or simulator footage. Every angle was added after the take. By noon the goal is to understand the same workflow on your own session. LIVE OPTION: Fort — open the prepared VRCineKit project, then /Game/VRCine/Sequences/LS_Edit in Sequencer; play the camera cuts.
+> **Notes:** CLASS CLOCK: 10:00–10:03 ET. Play the 20-second rendered practice edit. This is a seeded practice take, not headset or simulator footage. Every angle was added after the take. By noon the goal is to understand the same workflow on your own session. LIVE OPTION: Lenovo — in the class copy of UOXR, VR Cinematics > Build practice stage + take; select VR_Head, then Re-shoot: 5 cameras + first edit; play the generated cinematic. Use the clip if that project has not completed its preflight.
 
 ### `lesson-1`: Raw VR Footage Looks Bad.
 
@@ -237,7 +237,7 @@ Cut for time or superseded. To restore one, add its id back to a talk's act (or 
 
 **On screen:** Level the horizon. Nobody misses the roll.
 
-> **Notes:** CLASS CLOCK: 10:57–10:59 ET. Idea three. Scale the residual roll toward zero. Roll is the biggest nausea source in head-camera footage and viewers do not miss it. On the class take it goes from 13.3 degrees to zero. One caution: a head-centered path from an avatar head bone needs about 14 centimeters of forward offset, or the POV renders from inside the head mesh. Take Recorder's HMD camera is already at the eyes.
+> **Notes:** CLASS CLOCK: 10:57–10:59 ET. Idea three. Scale the residual roll toward zero. Roll can make a flat recording uncomfortable in head-camera footage and viewers do not miss it. On the class take it goes from 13.3 degrees to zero. One caution: a head-centered path from an avatar head bone needs about 14 centimeters of forward offset, or the POV renders from inside the head mesh. Take Recorder's HMD camera is already at the eyes.
 
 ### `p3-by-hand`: By hand: Curve Editor → Filter Tool
 
