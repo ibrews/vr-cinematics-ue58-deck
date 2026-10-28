@@ -184,7 +184,7 @@ Cut for time or superseded. To restore one, add its id back to a talk's act (or 
 - **Meta XR Simulator:** ○ Same OpenXR session from keyboard/mouse; ○ Record & Replay captures input timing; ○ Admin install once: do it the day before
 - **Output:** A take you can re-shoot
 
-> **Notes:** CLASS CLOCK: 10:11–10:32 ET. Distinguish three recordings. Take Recorder is editable Sequencer tracks. Unreal Replay stores replicated state, not arbitrary world state or every HMD component. Simulator Session Capture stores runtime input timing, not a Level Sequence. Stock VR head/hand replication must be tested explicitly. LIVE OPTION: Fort — in the approved UOXR editor, Window > Cinematics > Take Recorder; add the active pawn, expand its Camera and MotionController components, set the take rate, record a short action, stop, and inspect tracks. For Replay, use demorec ClassTake, demostop, demoplay ClassTake in the game console. Verify the head and both hands actually move before calling the replay complete.
+> **Notes:** CLASS CLOCK: 10:11–10:32 ET. Distinguish three recordings. Take Recorder is editable Sequencer tracks. Unreal Replay stores replicated state, not arbitrary world state or every HMD component. Simulator Session Capture stores runtime input timing, not a Level Sequence. Stock VR head/hand replication must be tested explicitly. LIVE OPTION: Lenovo — open G:/VRCinematics/2026-10-28/uoxr/UOXRTemplate.uproject with VRCineTools and Takes enabled; use Window > Cinematics > Take Recorder; add the active pawn, expand its Camera and MotionController components, set the take rate, record a short action, stop, and inspect tracks. For Replay, use demorec ClassTake, demostop, demoplay ClassTake in the game console. Verify the head and both hands actually move before calling the replay complete.
 
 ### `p2-ai-xrsim`: AI performs a VR action, without a headset
 
@@ -193,7 +193,7 @@ Cut for time or superseded. To restore one, add its id back to a talk's act (or 
 *UOXR • xrsim + Meta XR Simulator 207 • recorded test footage*
 *Credit:* Alex Coulombe Presents, UOXR simulator test footage, reused from docs/media/uoxr-menu-selection.mp4
 
-> **Notes:** CLASS CLOCK: 10:14–10:17 ET (inside the capture block). Play the 17.6-second clip twice. The JSON hand scenario drives real UOXR Blueprint controls, opening the menu and selecting movement modes. The on-frame verification count belongs to that recorded test, not this class branch. It uses the optional native hand adapter; this is separate from the Operator controller API, which does not inject hand joints. Source: ibrews/uoxr docs/media/uoxr-menu-selection.mp4 and Scripts/Test-UOXRHandMenuClicksXrsim.py; prior test on Fort, reused unchanged. LIVE OPTION: Fort — only in the prepared, licensed simulator setup with its native hand adapter, open the UOXR tutorial, start VR Preview and run the checked-in Test-UOXRHandMenuClicksXrsim.py scenario. Use the clip if that setup has not been preflighted.
+> **Notes:** CLASS CLOCK: 10:14–10:17 ET (inside the capture block). Play the 17.6-second clip twice. The JSON hand scenario drives real UOXR Blueprint controls, opening the menu and selecting movement modes. The on-frame verification count belongs to that recorded test, not this class branch. It uses the optional native hand adapter; this is separate from the Operator controller API, which does not inject hand joints. Source: ibrews/uoxr docs/media/uoxr-menu-selection.mp4 and Scripts/Test-UOXRHandMenuClicksXrsim.py; prior test on Fort, reused unchanged. LIVE OPTION: Fort — only after the Aura owner releases Fort and the simulator has passed a fresh preflight; in the prepared, licensed simulator setup with its native hand adapter, open the UOXR tutorial, start VR Preview and run the checked-in Test-UOXRHandMenuClicksXrsim.py scenario. Use the clip if that setup has not been preflighted.
 
 ### `p2-no-headset`: No headset? You're not behind.
 
@@ -245,7 +245,7 @@ Cut for time or superseded. To restore one, add its id back to a talk's act (or 
 
 **On screen:** By hand: Curve Editor → Filter Tool
 
-> **Notes:** CLASS CLOCK: 10:59–11:04 ET. Students follow along here. Open the take's Camera or VR_Head transform curves in the Curve Editor, select the rotation channels, run the Euler filter first, then a Gaussian or an FFT low-pass. It works, per channel, and it is blind to teleports, which is why we then do the one-click version. Epic ships its own scripted version at Engine/Plugins/VirtualProduction/VirtualCamera/Content/Python/VCamSmooth.py: Bake plus Gaussian. LIVE OPTION: Fort — open the recorded Level Sequence, select the Camera transform channels, open Curve Editor > Filter Tool, duplicate before filtering, split at a teleport, then compare at that boundary.
+> **Notes:** CLASS CLOCK: 10:59–11:04 ET. Students follow along here. Open the take's Camera or VR_Head transform curves in the Curve Editor, select the rotation channels, run the Euler filter first, then a Gaussian or an FFT low-pass. It works, per channel, and it is blind to teleports, which is why we then do the one-click version. Epic ships its own scripted version at Engine/Plugins/VirtualProduction/VirtualCamera/Content/Python/VCamSmooth.py: Bake plus Gaussian. LIVE OPTION: Lenovo — open the recorded Level Sequence, select the Camera transform channels, open Curve Editor > Filter Tool, duplicate before filtering, split at a teleport, then compare at that boundary.
 
 ### `lesson-4`: Re-Shoot It.
 
@@ -266,7 +266,7 @@ Cut for time or superseded. To restore one, add its id back to a talk's act (or 
 - **Locked-off tripod:** A camera that never moves; The calm shot in the edit (50 mm) [media/class/rig-lockedoff.jpg]
 - **Low hero:** Looks up at the player; The heroic angle (18 mm) [media/class/rig-lowhero.jpg]
 
-> **Notes:** CLASS CLOCK: 11:05–11:15 ET. The five rigs the Re-shoot command builds on your take: stabilized POV at 12 millimeters, about 90 degrees horizontal; over-shoulder at 24; orbit at 35; locked-off tripod at 50; low hero at 18. Click through them. Each one is an ordinary CineCamera: right-click it and Pilot it to show it is just keys. The command also builds a first-pass edit in the Camera Cuts track, cutting on the TAKE CUT markers. The rig descriptions beyond the lens are my film-grammar shorthand, not measured claims. LIVE OPTION: Fort — VR Cinematics menu > Add re-shoot cameras; open the generated cinematic and switch among the five CineCameraActors. The class practice sequence is the prepared fallback.
+> **Notes:** CLASS CLOCK: 11:05–11:15 ET. The five rigs the Re-shoot command builds on your take: stabilized POV at 12 millimeters, about 90 degrees horizontal; over-shoulder at 24; orbit at 35; locked-off tripod at 50; low hero at 18. Click through them. Each one is an ordinary CineCamera: right-click it and Pilot it to show it is just keys. The command also builds a first-pass edit in the Camera Cuts track, cutting on the TAKE CUT markers. The rig descriptions beyond the lens are my film-grammar shorthand, not measured claims. LIVE OPTION: Lenovo — VR Cinematics menu > Add re-shoot cameras; open the generated cinematic and switch among the five CineCameraActors. The class practice sequence is the prepared fallback.
 
 ### `p4-cut`: Cut on the teleport.
 
@@ -296,17 +296,17 @@ Cut for time or superseded. To restore one, add its id back to a talk's act (or 
 
 **[A] [DWELL] 60s**
 
-*MRQ result • seeded practice take • original kit render*
-- Draft: 720p, MRQ_Draft preset; 600 frames in ~75 s incl. startup*; Check shot-start frames
-- Final: 1080p, 8 temporal samples; About 4 minutes*; Real motion blur from 90 Hz keys
-- Command line: Second process or another machine; Menu item prints the command; * GTX 1080 Ti, UE 5.8.2
+*New UE 5.8.3 draft • recorded camera • three picked angles*
+- Draft: 720p; inspect every shot before final
+- Final: 1080p and eight temporal samples
+- New class run: 147 frames, three chosen angles
 - **Draft:** ○ 720p, MRQ_Draft preset; ○ 600 frames in ~75 s incl. startup*; ○ Check shot-start frames
 - **Final:** ○ 1080p, 8 temporal samples; ○ About 4 minutes*; ○ Real motion blur from 90 Hz keys
 - **Command line:** ○ Second process or another machine; ○ Menu item prints the command; ○ * GTX 1080 Ti, UE 5.8.2
 - **Output:** Frames, then an edit
-*Credit:* Original VR Cinematics kit, verified UE 5.8.2 MRQ render, Alex Coulombe Presents
+*Credit:* This class lane, UE 5.8.3 • scripted desktop camera recording
 
-> **Notes:** CLASS CLOCK: 11:31–11:38 ET. The kit has a Draft preset and a Final preset. Draft is 720p and finished a 600 frame edit in about 75 seconds including startup on the Toaster test machine, a GTX 1080 Ti on UE 5.8.2; Final is 1080p with 8 temporal samples and took about 4 minutes. Don't render the final live: play the pre-rendered file. The first render compiles shaders, about a minute, so do it in pre-flight. The Show command-line render menu item prints the command to render in a second process or on another machine. Movie Render Graph is the same settings as nodes: first segment to cut if you run late. Don't demo the path tracer: it needs hardware ray tracing and many student machines can't run it. LIVE OPTION: Fort — open Movie Render Queue, add the generated edit sequence, apply the draft preset, inspect output directory and camera cuts, then Render Local. Show Movie Render Graph as an alternate configuration path; no unverified MRG render claim.
+> **Notes:** CLASS CLOCK: 11:31–11:38 ET. Play the new 4.9-second MRQ draft and let it loop. It comes from the actual stock Take Recorder camera exercise in the UOXR take-home branch: record, scrub the saved take, choose three viewport angles, build the Sequencer cut, render 147 frames at 30 fps. This is scripted desktop camera motion, not a fresh XR head/hand recording. Point out the third angle crops the OPENXR header: inspect and reframe a draft before committing to a final. The original twenty-second seeded kit render remains the polished cold open. Draft is 720p; Final is 1080p with eight temporal samples. Render times depend on shader caches; use the prepared clip during class. The source-camera cut must not override a master edit, so the plugin preserves the source and creates a performance copy without its camera-cut track. The flat command-line route disables HMD and debug view modes; these are process-local settings. LIVE OPTION: Lenovo — launch the prepared desktop project with VRCineTools and Takes enabled and -nohmd, open /VRCineTools/Takes/ClassRecorded_01_PickedCut, inspect its three Camera Cuts, reframe PickedCam_03, then use Movie Render Queue with MRQ_Draft. Show Movie Render Graph as an alternate configuration path; no MRG render claim.
 
 ### `p5-traps`: The Three Render Traps
 

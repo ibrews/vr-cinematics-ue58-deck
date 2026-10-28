@@ -4,7 +4,7 @@
   "project": "VR Cinematics for UE 5.8",
   "status": "source clips and documented excerpts; no new headset acceptance",
   "included": "UOXR simulator tests, practice smoothing and camera renders, ACCVR working-cut footage and complete trailer",
-  "omitted": "new same-session XR Take Recorder capture pending; Aura MetaHuman footage unavailable from existing receipts",
+  "omitted": "New same-session XR recording stopped after two repeated native null access violations; Aura MetaHuman footage unavailable without contention",
   "sources": {
     "practice": "ibrews/vr-cinematics-ue58-deck baseline 4ba10f3 media/class, original Toaster UE5.8.2 kit renders",
     "uoxr": "ibrews/uoxr docs/media copied read-only from Fort H:/GH/_worktrees/uoxr-qa-20261018",
@@ -12,8 +12,8 @@
   },
   "open": "Open MP4 in a player; deck media is relative/local and starts muted. No ZIP needed.",
   "retention": "Preserve class media; no source deletion authorized",
-  "file_count": 8,
-  "byte_count": 72206281,
+  "file_count": 10,
+  "byte_count": 76033394,
   "files": [
     {
       "deck_path": "media/class/uoxr-ai-menu-selection.mp4",
@@ -185,7 +185,50 @@
           "duration": "56.533333"
         }
       }
+    },
+    {
+      "deck_path": "media/video/carol-replay-marley.mp4",
+      "archive_file": "vr-cinematics-carol-marley-replay-video-existing-source-2026-10-28.mp4",
+      "bytes": 3573106,
+      "sha256": "c42f67db3e50786204ca7b463065d0d55c45c6bf25a4710cbf5a29ba63457b4e",
+      "source": "Original deck baseline 4ba10f3; existing Carol replay footage, not a new UE5.8 capture",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1080,
+            "height": 1080
+          }
+        ],
+        "format": {
+          "duration": "12.000000"
+        }
+      }
+    },
+    {
+      "deck_path": "media/class/uoxr-recorded-picked-cut-mrq.mp4",
+      "archive_file": "vr-cinematics-uoxr-recorded-picked-cut-mrq-video-verified-desktop-2026-10-28.mp4",
+      "bytes": 254007,
+      "sha256": "b8534ecca1bcbf6c3030ed9e02fd32021af60ef8f8b31c56e719674de42acbd3",
+      "source": "This class lane: stock Take Recorder scripted CineCamera in UOXR UE5.8.3, source take preserved, three picked angles, final MRQ frame review",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1280,
+            "height": 720
+          }
+        ],
+        "format": {
+          "duration": "4.900000"
+        }
+      }
     }
   ],
-  "tree_sha256": "f7eae9fa355a3dd2654c92d7dac914d9625e108e8cd86704945e4935a72dbb78"
+  "tree_sha256": "1a3a977e1eaa4b263ea27d0a3566a295d076e767c7ef1c456015c385b0807119",
+  "tree_digest_format": "SHA256 of UTF-8 lines: <file sha256>  <archive filename>, sorted by archive filename, joined with LF and no trailing LF"
 }
