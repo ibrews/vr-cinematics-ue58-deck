@@ -23,7 +23,7 @@ Thesis: A VR recording is a set, not a finished film. Measure its problems, fix 
 | 5 | PART I | Jitter 1.54° → 0.18° Seasick 2575 → 136 °/s² Roll 13.3° → 0 (`p1-numbers`) | [A] | DWELL · CORE | 45 | 2:50 |
 | 6 | PART II | Capture It. (`lesson-2`) | [A] | FLASH · CORE | 10 | 3:00 |
 | 7 | PART II | Three Ways to Get a Take (`p2-recorders`) | [A] | DWELL · CORE | 60 | 4:00 |
-| 8 | PART II | AI performs a VR action, without a headset (`p2-ai-xrsim`) | [A] | DWELL · CORE | 30 | 4:30 |
+| 8 | PART II |  (`p2-ai-xrsim`) | [A] | DWELL · CORE | 30 | 4:30 |
 | 9 | PART II | No headset? You're not behind. (`p2-no-headset`) | [A] | DWELL · TRIM-1 | 30 | 5:00 |
 | 10 | PART III | Stabilize It. (`lesson-3`) | [A] | FLASH · CORE | 10 | 5:10 |
 | 11 | PART III | Smooth rotation as quaternions. (`p3-quaternions`) | [A] | DWELL · CORE | 40 | 5:50 |
@@ -32,7 +32,7 @@ Thesis: A VR recording is a set, not a finished film. Measure its problems, fix 
 | 14 | PART III | By hand: Curve Editor → Filter Tool (`p3-by-hand`) | [A] | DWELL · TRIM-2 | 45 | 8:10 |
 | 15 | PART IV | Re-Shoot It. (`lesson-4`) | [A] | FLASH · CORE | 10 | 8:20 |
 | 16 | PART IV | Five Cameras, One Take (`p4-rigs`) | [A] | DWELL · CORE | 75 | 9:35 |
-| 17 | PART IV | One take, five angles (`p4-all-cameras`) | [A] | DWELL · CORE | 30 | 10:05 |
+| 17 | PART IV |  (`p4-all-cameras`) | [A] | DWELL · CORE | 30 | 10:05 |
 | 18 | PART IV | Cut on the teleport. (`p4-cut`) | [A] | DWELL · CORE | 40 | 10:45 |
 | 19 | PART IV | Find the Shot Before You Fly (`camera-toy`) | [A+B] | DWELL · TRIM-2 | 40 | 11:25 |
 | 20 | PART V | Render It. (`lesson-5`) | [A] | FLASH · CORE | 10 | 11:35 |
@@ -42,7 +42,7 @@ Thesis: A VR recording is a set, not a finished film. Measure its problems, fix 
 | 24 | PART VI | Going Further: The ACCVR Cinematographer (`lesson-6`) | [A+B] | FLASH · CORE | 15 | 14:40 |
 | 25 | PART VI | Replay: Any Seat in the House (`c-replay-video`) | [A+B] | DWELL · CORE | 40 | 15:20 |
 | 26 | PART VI | The Cinematographer Build (`c-cinematographer`) | [A+B] | DWELL · CORE | 75 | 16:35 |
-| 27 | PART VI | Angle selection and the working cut (`c-angle-video`) | [A+B] | DWELL · CORE | 60 | 17:35 |
+| 27 | PART VI |  (`c-angle-video`) | [A+B] | DWELL · CORE | 60 | 17:35 |
 | 28 | PART VI | A Christmas Carol VR working-cut trailer (`c-trailer`) | [A+B] | DWELL · CORE | 60 | 18:35 |
 | 29 | PART VI | Cut Your Own Version of the Show (`c-working-cut`) | [A+B] | DWELL · TRIM-1 | 60 | 19:35 |
 | 30 | PART VI | Cameras are data. Shots are structs. Credit the operator. (`c-lessons`) | [A+B] | DWELL · CORE | 45 | 20:20 |
@@ -68,7 +68,7 @@ Thesis: Treat the camera as data: a shot is a struct, a show is a recording, and
 | 8 | CAMERAS | A seek can bring back a scene that's gone. (`c-preroll`) | [A+B] | DWELL · TRIM-1 | 35 | 7:25 |
 | 9 | CAMERAS | Find the Shot Before You Fly (`camera-toy`) | [A+B] | DWELL · TRIM-2 | 40 | 8:05 |
 | 10 | CAMERAS | The Cinematographer Build (`c-cinematographer`) | [A+B] | DWELL · CORE | 75 | 9:20 |
-| 11 | CAMERAS | Angle selection and the working cut (`c-angle-video`) | [A+B] | DWELL · CORE | 60 | 10:20 |
+| 11 | CAMERAS |  (`c-angle-video`) | [A+B] | DWELL · CORE | 60 | 10:20 |
 | 12 | CAMERAS | Cut Your Own Version of the Show (`c-working-cut`) | [A+B] | DWELL · TRIM-1 | 60 | 11:20 |
 | 13 | CAMERAS | The Title Card Is a Decision (`c-title-card`) | [A+B] | DWELL · TRIM-2 | 60 | 12:20 |
 | 14 | CAMERAS | VCam is editor-only in UE 5.4.4. (`c-vcam`) | [A+B] | DWELL · TRIM-2 | 45 | 13:05 |
@@ -175,12 +175,11 @@ Cut for time or superseded. To restore one, add its id back to a talk's act (or 
 
 > **Notes:** CLASS CLOCK: 10:11–10:32 ET. Distinguish three recordings. Take Recorder is editable Sequencer tracks. Unreal Replay stores replicated state, not arbitrary world state or every HMD component. Simulator Session Capture stores runtime input timing, not a Level Sequence. Stock VR head/hand replication must be tested explicitly. LIVE OPTION: Lenovo — open G:/VRCinematics/2026-10-28/uoxr/UOXRTemplate.uproject with VRCineTools and Takes enabled; use Window > Cinematics > Take Recorder; add the active pawn, expand its Camera and MotionController components, set the take rate, record a short action, stop, and inspect tracks. For Replay, use demorec ClassTake, demostop, demoplay ClassTake in the game console. Verify the head and both hands actually move before calling the replay complete.
 
-### `p2-ai-xrsim`: AI performs a VR action, without a headset
+### `p2-ai-xrsim`: 
 
 **[A] [DWELL] 30s**
 
-*UOXR • xrsim + Meta XR Simulator 207 • recorded test footage*
-*Credit:* Alex Coulombe Presents, UOXR simulator test footage, reused from docs/media/uoxr-menu-selection.mp4
+*Credit:* AI performs a VR action, without a headset · UOXR • xrsim + Meta XR Simulator 207 • recorded test footage · Alex Coulombe Presents, UOXR simulator test footage, reused from docs/media/uoxr-menu-selection.mp4
 
 > **Notes:** CLASS CLOCK: 10:14–10:17 ET (inside the capture block). Play the 17.6-second clip twice. The JSON hand scenario drives real UOXR Blueprint controls, opening the menu and selecting movement modes. The on-frame verification count belongs to that recorded test, not this class branch. It uses the optional native hand adapter; this is separate from the Operator controller API, which does not inject hand joints. Source: ibrews/uoxr docs/media/uoxr-menu-selection.mp4 and Scripts/Test-UOXRHandMenuClicksXrsim.py; prior test on Fort, reused unchanged. LIVE OPTION: Fort — only after the Aura owner releases Fort and the simulator has passed a fresh preflight; in the prepared, licensed simulator setup with its native hand adapter, open the UOXR tutorial, start VR Preview and run the checked-in Test-UOXRHandMenuClicksXrsim.py scenario. Use the clip if that setup has not been preflighted.
 
@@ -473,21 +472,19 @@ CLASS CLOCK: 11:31–11:38 ET. Play the new 4.9-second MRQ draft and let it loop
 
 > **Notes:** CLASS CLOCK: 11:56–12:00 ET. Homework is in the kit's class/homework.md; read it from there rather than from this slide. In short: record your own take if you can, stabilize it, re-shoot it, render a draft. Post a still or a clip in the class thread so we can look together. Vote on the next topic and book office hours.
 
-### `p4-all-cameras`: One take, five angles
+### `p4-all-cameras`: 
 
 **[A] [DWELL] 30s**
 
-*Synthetic practice take • offline re-shoot*
-*Credit:* VR Cinematics kit, UE 5.8.2 render, Alex Coulombe Presents
+*Credit:* One take, five angles · Synthetic practice take • offline re-shoot · VR Cinematics kit, UE 5.8.2 render, Alex Coulombe Presents
 
 > **Notes:** CLASS CLOCK: 11:12–11:15 ET (inside the re-shoot block). Play the 20-second montage. Point out that the performance timing is identical across every view. These are real MRQ renders of the seeded practice take, not a newly recorded headset session. LIVE OPTION: Lenovo — open the generated cinematic from the class plugin and choose a different camera in its Camera Cuts track.
 
-### `c-angle-video`: Angle selection and the working cut
+### `c-angle-video`: 
 
 **[A+B] [DWELL] 60s**
 
-*ACCVR24 r853 package • source trailer in SVN r855*
-*Credit:* A Christmas Carol VR, Alex Coulombe Presents; live performers Ari Tarr and Debbie Deer
+*Credit:* Angle selection and the working cut · ACCVR24 r853 package • source trailer in SVN r855 · A Christmas Carol VR, Alex Coulombe Presents; live performers Ari Tarr and Debbie Deer
 
 > **Notes:** CLASS CLOCK: 11:47–11:49 ET. Play this recorded clip and explain the real keyboard actions: pause and find an angle, pick a lens, hold Up to keep the shot, add Shot by credit, then play the assembled working cut. Source: Lenovo G:/SVN/ACCVR24/Tools/MissingShot/trailer, revision 855. This is a 7.8–51.0 second excerpt of that trailer, not a new live capture. LIVE OPTION: Lenovo — package G:/Archives/ACCVR24-2026-10/builds/accvr24-working-cut-r855-win64-development-2026-10-26/Windows/ACCVR24.exe; read CONTROLS.html first, F2 sets credit, hold Up adds shot, Ctrl+Home plays working cut. Use video unless the package has been smoke-tested.
 
