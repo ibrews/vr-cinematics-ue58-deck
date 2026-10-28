@@ -1,0 +1,13 @@
+{
+ "id": "pmre/working-cut",
+ "pulled_from": "git@github.com:ibrews/pmre-2026-xr-chitect.git",
+ "commit": "59f5b0901d1c2035bb59deb6d518a8a18f1e22e2",
+ "pulled_at": "2026-10-28T04:37:10+00:00",
+ "files": {
+  "slide.js": "a1e4582e864df14958cab9a707f6cc75ff2a3cebe035e21500a313c388f89675"
+ },
+ "support_files": {},
+ "provenance": [
+  "ibrews/mia-2026-collective-pitch@9ee2493 index.html mgBuildReplayLine + .rl-* CSS (working-cut case)"
+ ]
+}

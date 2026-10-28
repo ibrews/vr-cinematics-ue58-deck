@@ -184,12 +184,7 @@ def main():
                          "(vector/selectable text; page size depends on Chrome's @page support)")
     ap.add_argument("--json", action="store_true", help="fidelity report as JSON")
     ap.add_argument("--no-report", action="store_true")
-    ap.add_argument("--query", default="", help="extra query string for every capture, e.g. 'talk=b'")
-    ap.add_argument("--wait-ms", type=int, default=3500, help="wall time per screenshot (default 3500)")
     args = ap.parse_args()
-    import capture_slides
-    capture_slides.EXTRA_QUERY = args.query
-    capture_slides.SHOT_WAIT_MS = args.wait_ms
 
     chrome = find_chrome()
     print("reading deck manifest…", file=sys.stderr)

@@ -1,0 +1,16 @@
+{
+ "id": "pmre/camera-toy",
+ "pulled_from": "git@github.com:ibrews/pmre-2026-xr-chitect.git",
+ "commit": "59f5b0901d1c2035bb59deb6d518a8a18f1e22e2",
+ "pulled_at": "2026-10-28T04:37:10+00:00",
+ "files": {
+  "slide.js": "63437dabeb2ac90bcca20764ca4c7922f31b67cf6c32964355af0b36635176e1",
+  "three-LICENSE.txt": "4c40a1ef62450b857c3b2aaf294936304cd552d965fbcd9d32d4c5bcf4ba4454",
+  "three.module.min.js": "6c2bfdf07626404916f34aef8cf57992926d849526bc6eb4556da96a3ba4e78c"
+ },
+ "support_files": {},
+ "provenance": [
+  "ibrews/mia-2026-collective-pitch@9ee2493 index.html mgBuildCameraToy + .ct-* CSS (camera-toy layout)",
+  "three.js r164 three.module.min.js (MIT, three-LICENSE.txt), vendored in mia-2026-collective-pitch assets/vendor/three"
+ ]
+}

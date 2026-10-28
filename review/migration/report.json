@@ -1,0 +1,73 @@
+{
+  "url": "http://localhost:8750/",
+  "viewport": "1920x1080",
+  "slides": 42,
+  "verdict": "PASS",
+  "failedBecause": [],
+  "problemSlides": [],
+  "unexpectedErrors": [],
+  "unexpectedFailedRequests": [],
+  "expectedNoise": [
+    {
+      "line": "console: Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8750/notes-config.json",
+      "expected": "notes-config-404"
+    },
+    {
+      "line": "console: Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8750/notes-config.json",
+      "expected": "notes-config-404"
+    },
+    {
+      "line": "http://localhost:8750/notes-config.json :: HTTP 404",
+      "expected": "notes-config-404"
+    },
+    {
+      "line": "http://localhost:8750/notes-config.json :: HTTP 404",
+      "expected": "notes-config-404"
+    }
+  ],
+  "expectedNoiseAbsent": [],
+  "ytLoadedAtEnd": 0,
+  "steps": {
+    "slidesWithSteps": 4,
+    "substepShots": 13,
+    "contract": [
+      {
+        "i": 5,
+        "mod": "class/compare",
+        "declared": 0,
+        "reachable": 0,
+        "frame": null
+      },
+      {
+        "i": 17,
+        "mod": "class/rigs",
+        "declared": 4,
+        "reachable": 4,
+        "frame": null
+      },
+      {
+        "i": 19,
+        "mod": "pmre/camera-toy",
+        "declared": 3,
+        "reachable": 3,
+        "frame": null
+      },
+      {
+        "i": 25,
+        "mod": "pmre/working-cut",
+        "declared": 3,
+        "reachable": 3,
+        "frame": null
+      },
+      {
+        "i": 33,
+        "mod": "pmre/working-cut",
+        "declared": 3,
+        "reachable": 3,
+        "frame": null
+      }
+    ],
+    "broken": []
+  },
+  "videosChecked": 3
+}

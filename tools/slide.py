@@ -1,0 +1,395 @@
+#!/usr/bin/env python3
+"""Slide modules: list what a deck has, pull one into another deck, keep the deck's module list in sync.
+
+A slide module is slides/<namespace>/<id>/slide.js plus its assets (slides/README.md has the contract).
+    python3 tools/slide.py list  <deck>                       # modules in a deck dir, index.html or https URL
+    python3 tools/slide.py pull  <deck> <ns/id> --into <talk>  # copy a module (and its files) into another deck
+    python3 tools/slide.py sync  [<talk>]                     # rewrite the deck's SD SLIDE MODULES block from disk
+    python3 tools/slide.py check [<talk>]                     # static checks: every use: resolves, every file and
+                                                              # runtime dependency (importmap entry) declared and present
+
+<deck> is a folder (with index.html and slides/), a path to index.html, or a URL such as a GitHub Pages deck.
+Metadata is read by running each slide.js under Node with a stub SD.defineSlide, so it is exactly what the deck
+sees; nothing is rendered. Needs node on PATH.
+"""
+import argparse, datetime, hashlib, json, re, shutil, subprocess, sys, urllib.error, urllib.parse, urllib.request
+from pathlib import Path
+
+A, B = "<!-- ── SD SLIDE MODULES START ── -->", "<!-- ── SD SLIDE MODULES END ── -->"
+FRAME_RUNTIME = "slides/sd-frame.js"
+ROOT = Path(__file__).resolve().parent.parent
+
+# Runs slide.js files in a sandbox where SD.defineSlide records the definition; functions are reported, not called,
+# except a steps(props) function, which is resolved against the module's own default props.
+META_JS = r"""
+const vm=require('vm'),fs=require('fs');const out=[];
+for(const f of process.argv.slice(1)){
+  const defs=[];const sandbox={SD:{defineSlide:d=>{defs.push(d);return d;}},document:{currentScript:null},window:{},console};
+  try{vm.runInNewContext(fs.readFileSync(f,'utf8'),sandbox,{filename:f,timeout:2000});}catch(e){out.push({file:f,error:String(e&&e.message||e)});continue;}
+  for(const d of defs){let steps=d.steps;let dyn=false;if(typeof steps==='function'){dyn=true;try{steps=steps(d.props||{});}catch(e){steps=null;}}
+    out.push({file:f,id:d.id,steps:steps==null?0:steps,dynamicSteps:dyn,duration:d.duration||null,frame:d.frame||null,
+      seekable:typeof d.seek==='function'||!!d.frame||/\bseek\s*\(/.test(String(d.render||'')),
+      props:Object.keys(d.props||{}),assets:d.assets||[],shared:d.shared||[],provenance:d.provenance||[],notes:d.notes||'',version:d.version||1,
+      requires:{importmap:(d.requires&&d.requires.importmap)||[]}});}
+}
+process.stdout.write(JSON.stringify(out));
+"""
+
+
+def node_meta(files):
+    if not files:
+        return []
+    try:
+        r = subprocess.run(["node", "-e", META_JS, *map(str, files)], capture_output=True, text=True, timeout=60)
+    except FileNotFoundError:
+        sys.exit("slide.py: node is not on PATH (it reads slide.js metadata)")
+    if r.returncode:
+        sys.exit("slide.py: reading slide.js failed:\n" + r.stderr)
+    return json.loads(r.stdout)
+
+
+def is_url(s):
+    return bool(re.match(r"^https?://", s))
+
+
+def deck_dir(arg):
+    p = Path(arg).expanduser().resolve()
+    return p.parent if p.is_file() else p
+
+
+def url_base(u):
+    """Folder URL of a deck: https://x/talk, https://x/talk/ and https://x/talk/index.html all give https://x/talk/."""
+    u = u.split("#")[0].split("?")[0]
+    if u.endswith("/"):
+        return u
+    last = u.rsplit("/", 1)[1]
+    return (u.rsplit("/", 1)[0] if "." in last else u) + "/"
+
+
+def fetch(url):
+    try:
+        with urllib.request.urlopen(url, timeout=30) as r:
+            return r.read()
+    except urllib.error.HTTPError as e:
+        sys.exit(f"slide.py: {url}: HTTP {e.code}")
+    except urllib.error.URLError as e:
+        sys.exit(f"slide.py: {url}: {e.reason}")
+
+
+def talk_sources(root):
+    """index.html plus a talk's unbaked sources (talk/*.js, talk/*.json), where use: cases may live before a bake."""
+    out = (root / "index.html").read_text(encoding="utf-8") if (root / "index.html").exists() else ""
+    for p in sorted((root / "talk").glob("*.js")) + sorted((root / "talk").glob("*.json")) if (root / "talk").is_dir() else []:
+        out += "\n" + p.read_text(encoding="utf-8")
+    return out
+
+
+def uses_in(html):
+    """`use:` ids in a deck's SECTIONS (and any talk source spliced into it), with counts."""
+    ids = re.findall(r"""(?:\buse|[\"\']use[\"\'])\s*:\s*['"]([\w-]+/[\w-]+)['"]""", html)
+    return {i: ids.count(i) for i in dict.fromkeys(ids)}
+
+
+def listed_in(html):
+    m = re.search(re.escape(A) + r"(.*?)" + re.escape(B), html, re.S)
+    return re.findall(r'src="([^"]+/slide\.js)"', m.group(1)) if m else None
+
+
+def module_files(root):
+    return sorted((root / "slides").glob("*/*/slide.js"))
+
+
+def cmd_list(a):
+    if is_url(a.deck):
+        base = url_base(a.deck)
+        html = fetch(base + "index.html").decode("utf-8", "replace")
+        srcs = listed_in(html) or []
+        tmp = Path(subprocess.run(["mktemp", "-d"], capture_output=True, text=True).stdout.strip())
+        files = []
+        for src in srcs:
+            dst = tmp / src
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            dst.write_bytes(fetch(urllib.parse.urljoin(base, src)))
+            files.append(dst)
+        meta = node_meta(files)
+        for m in meta:
+            m["file"] = str(Path(m["file"]).relative_to(tmp))
+        shutil.rmtree(tmp, ignore_errors=True)
+    else:
+        root = deck_dir(a.deck)
+        idx = root / "index.html"
+        html = talk_sources(root)
+        files = module_files(root)
+        meta = node_meta(files)
+        for m in meta:
+            m["file"] = str(Path(m["file"]).relative_to(root))
+    used = uses_in(html)
+    if a.json:
+        print(json.dumps({"modules": meta, "uses": used}, indent=1))
+        return 0
+    if not meta:
+        print("no slide modules found")
+    for m in meta:
+        if "error" in m:
+            print(f"  !! {m['file']}: {m['error']}")
+            continue
+        kind = "frame" if m["frame"] else "inline"
+        dur = f"{m['duration']}s" if m["duration"] else "-"
+        st = f"{m['steps']}{'*' if m['dynamicSteps'] else ''}"
+        print(f"  {m['id']:<28} steps {st:<4} duration {dur:<6} {kind:<6} {'seekable' if m['seekable'] else 'not seekable':<13} used {used.get(m['id'], 0)}x   {m['file']}")
+    missing = [u for u in used if u not in {m.get('id') for m in meta}]
+    for u in missing:
+        print(f"  ?? {u}: used by the deck but no module defines it")
+    if any(m.get("dynamicSteps") for m in meta):
+        print("  * steps depend on props; shown for the module's defaults (the deck resolves them per use)")
+    return 1 if missing else 0
+
+
+# Bare module specifiers ('three', 'three/addons/x.js') resolve only through an importmap, and an iframe module's
+# imports resolve against the frame document's importmap, not the deck's. A missing entry fails at run time inside
+# a dynamic import(), which a module usually catches and turns into a fallback, so nothing on screen says it broke.
+BARE_IMPORT = re.compile(r"""(?:\bimport\s*\(\s*|\b(?:import|export)\s+[\w$*{}\s,]+?\s+from\s*|\bimport\s+)['"]([^'"]+)['"]""")
+
+
+def bare_imports(text):
+    return sorted({s for s in BARE_IMPORT.findall(text) if not re.match(r"^(\.|/|[a-z][\w+.-]*:)", s)})
+
+
+def importmap_of(html):
+    imports = {}
+    for body in re.findall(r"<script[^>]*type=[\"']?importmap[\"']?[^>]*>(.*?)</script>", html, flags=re.S | re.I):
+        try:
+            imports.update(json.loads(body).get("imports", {}))
+        except ValueError:
+            pass
+    return imports
+
+
+def mapped(spec, imports):
+    return spec in imports or any(k.endswith("/") and spec.startswith(k) for k in imports)
+
+
+def dep_host(root, m):
+    """(label, html) of the document whose importmap the module's imports resolve against."""
+    if m["frame"]:
+        f = root / "slides" / m["id"] / m["frame"]
+        return f"slides/{m['id']}/{m['frame']}", (f.read_text(encoding="utf-8") if f.exists() else "")
+    return "index.html", (root / "index.html").read_text(encoding="utf-8")
+
+
+def sha256(p):
+    return hashlib.sha256(p.read_bytes()).hexdigest()
+
+
+def git_head(d):
+    r = subprocess.run(["git", "-C", str(d), "rev-parse", "HEAD"], capture_output=True, text=True)
+    r2 = subprocess.run(["git", "-C", str(d), "remote", "get-url", "origin"], capture_output=True, text=True)
+    return (r.stdout.strip() or None), (r2.stdout.strip() or None)
+
+
+def unpublished(root, commit, origin, paths):
+    """Reasons the recorded commit/origin cannot reproduce these files: untracked, ignored or modified, or a commit
+    no remote branch contains. Empty for a folder that is not a git repo (then the path itself is the provenance)."""
+    if not commit:
+        return []
+    rel = [str(Path(p).resolve().relative_to(root.resolve())) for p in paths if Path(p).exists()]
+    r = subprocess.run(["git", "-C", str(root), "status", "--porcelain", "--ignored", "--", *rel], capture_output=True, text=True)
+    kind = {"??": "untracked", "!!": "ignored (never committed)"}
+    out = [f"{kind.get(l[:2], 'uncommitted change')}: {l[3:]}" for l in r.stdout.splitlines() if l.strip()]
+    if origin:
+        rb = subprocess.run(["git", "-C", str(root), "branch", "-r", "--contains", commit], capture_output=True, text=True)
+        if not rb.stdout.strip():
+            out.append(f"commit {commit[:7]} is not on any remote branch of {origin} (push it)")
+    return out
+
+
+def cmd_pull(a):
+    mid = a.id
+    if not re.match(r"^[\w-]+/[\w-]+$", mid):
+        sys.exit(f"slide.py: module id must be <namespace>/<id>, got {mid!r}")
+    into = deck_dir(a.into)
+    if not (into / "index.html").exists():
+        sys.exit(f"slide.py: {into} has no index.html")
+    html = (into / "index.html").read_text(encoding="utf-8")
+    if A not in html or B not in html or "SD.defineSlide" not in html:
+        sys.exit(f"slide.py: {into / 'index.html'} has no module loader (SD SLIDE MODULES block); re-seed it from "
+                 "ibrews/spatial-deck index.html first. Nothing was copied.")
+    dst = into / "slides" / mid
+    tmp = None
+    if is_url(a.deck):
+        base = url_base(a.deck)
+        tmp = Path(subprocess.run(["mktemp", "-d"], capture_output=True, text=True).stdout.strip())
+        src = tmp / "slides" / mid
+        src.mkdir(parents=True)
+        (src / "slide.js").write_bytes(fetch(urllib.parse.urljoin(base, f"slides/{mid}/slide.js")))
+        meta = node_meta([src / "slide.js"])[0]
+        for f in [meta["frame"], *meta["assets"]]:
+            if f:
+                (src / f).parent.mkdir(parents=True, exist_ok=True)
+                (src / f).write_bytes(fetch(urllib.parse.urljoin(base, f"slides/{mid}/{f}")))
+        if meta["frame"]:
+            (tmp / FRAME_RUNTIME).write_bytes(fetch(urllib.parse.urljoin(base, FRAME_RUNTIME)))
+        for sh in meta["shared"]:
+            (tmp / "slides" / sh).parent.mkdir(parents=True, exist_ok=True)
+            (tmp / "slides" / sh).write_bytes(fetch(urllib.parse.urljoin(base, f"slides/{sh}")))
+        origin, commit, root, dirty = a.deck, None, tmp, []
+    else:
+        root = deck_dir(a.deck)
+        src = root / "slides" / mid
+        if not (src / "slide.js").exists():
+            have = ", ".join(m["id"] for m in node_meta(module_files(root)) if "id" in m) or "none"
+            sys.exit(f"slide.py: {root} has no module {mid} (it has: {have})")
+        metas = node_meta([src / "slide.js"])
+        if not metas:
+            sys.exit(f"slide.py: {mid}/slide.js does not call SD.defineSlide")
+        meta = metas[0]
+        commit, origin = git_head(root)
+        dirty = unpublished(root, commit, origin, [src, *[root / "slides" / sh for sh in
+                            (["sd-frame.js"] if meta.get("frame") else []) + list(meta.get("shared", []))]])
+        if dirty and not a.dirty:
+            sys.exit(f"slide.py: {origin or root} at {(commit or 'no commit')[:7]} does not hold what would be copied, "
+                     "so .pulled.json would name a source that cannot reproduce it:\n  " + "\n  ".join(dirty) +
+                     "\nCommit and push it in the source repo first, or pass --dirty to pull anyway (recorded as dirty). "
+                     "Nothing was copied.")
+        origin = origin or str(root)
+    if "error" in meta:
+        sys.exit(f"slide.py: {mid}/slide.js does not load: {meta['error']}")
+    undeclared = [p for p in src.rglob("*") if p.is_file() and p.name not in ("slide.js", ".pulled.json")
+                  and str(p.relative_to(src)) not in set(meta["assets"]) | {meta["frame"]}]
+    if undeclared and not is_url(a.deck):
+        print(f"slide.py: note: {len(undeclared)} file(s) in {mid}/ are not in its assets list and will be copied anyway: "
+              + ", ".join(str(p.relative_to(src)) for p in undeclared[:5]))
+    if dst.resolve() == src.resolve() or dst.resolve() in src.resolve().parents or src.resolve() in dst.resolve().parents:
+        sys.exit(f"slide.py: source and destination are the same folder ({src}); nothing to pull")
+    if dst.exists() and not a.force:
+        same = all((dst / p.relative_to(src)).exists() and sha256(dst / p.relative_to(src)) == sha256(p)
+                   for p in src.rglob("*") if p.is_file() and p.name != ".pulled.json")
+        if same:
+            print(f"slide.py: {mid} is already in {into} and identical; nothing to do")
+            return cmd_sync(argparse.Namespace(talk=str(into), quiet=True))
+        sys.exit(f"slide.py: {dst} exists and differs; pass --force to replace it (your copy is overwritten)")
+    if dst.exists():
+        shutil.rmtree(dst)
+    shutil.copytree(src, dst, ignore=shutil.ignore_patterns(".pulled.json"))
+    # Runtime and shared files (slides/sd-frame.js, slides/look.js for frame modules, slides/kit/…) come along. A
+    # differing local copy is kept unless --force: it is what the talk was rehearsed with, and replacing it would
+    # change every module that uses it.
+    support = (["sd-frame.js", "look.js"] if meta["frame"] else []) + list(meta["shared"])
+    support_hashes = {}
+    for sh in support:
+        s_src, s_dst = root / "slides" / sh, into / "slides" / sh
+        if not s_src.exists():
+            if sh == "look.js":
+                continue  # written by tools/apply_look.py; only needed for non-noir looks
+            sys.exit(f"slide.py: {mid} needs slides/{sh} but the source deck does not have it")
+        if s_dst.exists() and sha256(s_dst) != sha256(s_src) and not a.force:
+            print(f"slide.py: keeping your slides/{sh} (differs from the source's; --force replaces it)")
+        else:
+            s_dst.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(s_src, s_dst)
+        support_hashes[sh] = sha256(s_dst)
+    rec = {"id": mid, "pulled_from": origin, "commit": commit, "pulled_at": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
+           "files": {str(p.relative_to(dst)): sha256(p) for p in sorted(dst.rglob("*")) if p.is_file()},
+           "support_files": support_hashes, "provenance": meta["provenance"]}
+    if dirty:
+        rec["dirty"] = dirty
+    (dst / ".pulled.json").write_text(json.dumps(rec, indent=1) + "\n", encoding="utf-8")
+    if tmp:
+        shutil.rmtree(tmp, ignore_errors=True)
+    cmd_sync(argparse.Namespace(talk=str(into), quiet=True))
+    label, host = dep_host(into, {**meta, "id": mid})
+    need = [s for s in meta["requires"]["importmap"] if not mapped(s, importmap_of(host))]
+    if need:
+        have = importmap_of(dep_host(root, {**meta, "id": mid})[1]) if not tmp else {}
+        print(f"slide.py: WARN {mid} needs importmap entries that {label} does not have; add them to its "
+              '<script type="importmap"> (slide.py check fails until you do):')
+        for s in need:
+            print(f'    "{s}": "{have.get(s, "<url or vendored path>")}"')
+    if dirty:
+        print("slide.py: WARN pulled with --dirty; .pulled.json records why the source commit cannot reproduce it")
+    print(f"slide.py: pulled {mid} ({meta['steps']} step(s){', ' + str(meta['duration']) + 's' if meta['duration'] else ''}) into {dst.relative_to(into)}")
+    print("  add it to SECTIONS as a case, overriding any of its props:")
+    print(f"    {{ use: '{mid}', props: {{ {', '.join(p + ': …' for p in meta['props'])} }}, notes: '' }},")
+    return 0
+
+
+def cmd_sync(a):
+    root = deck_dir(a.talk)
+    idx = root / "index.html"
+    s = idx.read_text(encoding="utf-8")
+    if A not in s or B not in s:
+        sys.exit(f"slide.py: {idx} has no SD SLIDE MODULES block; re-seed it from ibrews/spatial-deck index.html (module loader)")
+    files = module_files(root)
+    tags = "".join(f'<script src="{p.relative_to(root).as_posix()}"></script>\n' for p in files)
+    new = re.sub(re.escape(A) + r".*?" + re.escape(B), lambda m: A + "\n" + tags + B, s, count=1, flags=re.S)
+    if new != s:
+        idx.write_text(new, encoding="utf-8")
+    if not getattr(a, "quiet", False):
+        print(f"slide.py: {idx.name} lists {len(files)} module(s)" + ("" if new != s else " (unchanged)"))
+    return 0
+
+
+def cmd_check(a):
+    """Static half of the steps lint; the behavioral half is tools/sweep_deck.mjs --steps."""
+    root = deck_dir(a.talk)
+    html = (root / "index.html").read_text(encoding="utf-8")
+    meta = node_meta(module_files(root))
+    by_id = {m["id"]: m for m in meta if "id" in m}
+    errs = [f"{m['file']}: does not load: {m['error']}" for m in meta if "error" in m]
+    listed = listed_in(html)
+    if listed is None:
+        errs.append("index.html has no SD SLIDE MODULES block")
+    else:
+        disk = [p.relative_to(root).as_posix() for p in module_files(root)]
+        if sorted(listed) != sorted(disk):
+            errs.append(f"modules block is stale (lists {len(listed)}, slides/ has {len(disk)}): run tools/slide.py sync")
+    for u in uses_in(talk_sources(root)):
+        if u not in by_id:
+            errs.append(f"use: '{u}' has no module in slides/")
+    for m in by_id.values():
+        d = root / "slides" / m["id"]
+        if Path(m["file"]).resolve().parent != d.resolve():
+            errs.append(f"{m['file']}: defines {m['id']} but lives in {Path(m['file']).parent}; the folder must match the id")
+        declared = set(m["assets"]) | ({m["frame"]} if m["frame"] else set())
+        for f in declared:
+            if not (d / f).exists():
+                errs.append(f"{m['id']}: declares {f} but the file is missing")
+        for p in d.rglob("*"):
+            if p.is_file() and p.name not in ("slide.js", ".pulled.json", "README.md") and p.relative_to(d).as_posix() not in declared:
+                errs.append(f"{m['id']}: {p.relative_to(d)} is not in assets (slide.py pull from a URL would miss it)")
+        for sh in m.get("shared", []):
+            if not (root / "slides" / sh).exists():
+                errs.append(f"{m['id']}: needs shared file slides/{sh}, which is missing")
+        if m["frame"] and not (root / FRAME_RUNTIME).exists():
+            errs.append(f"{m['id']}: is an iframe module but {FRAME_RUNTIME} is missing")
+        req = m["requires"]["importmap"]
+        code = Path(m["file"]).read_text(encoding="utf-8") + (
+            (d / m["frame"]).read_text(encoding="utf-8") if m["frame"] and (d / m["frame"]).exists() else "")
+        for s in bare_imports(code):
+            if not mapped(s, {k: 1 for k in req}):
+                errs.append(f"{m['id']}: imports '{s}' but does not declare it; add requires: {{ importmap: ['{s}'] }}")
+        label, host = dep_host(root, m)
+        im = importmap_of(host)
+        for s in req:
+            if not mapped(s, im):
+                errs.append(f"{m['id']}: requires importmap entry '{s}', which {label} does not map")
+    for e in errs:
+        print("  FAIL " + e)
+    print(f"slide.py check: {len(by_id)} module(s), {len(uses_in(talk_sources(root)))} used id(s), {len(errs)} problem(s)")
+    return 1 if errs else 0
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    p = sub.add_parser("list"); p.add_argument("deck"); p.add_argument("--json", action="store_true")
+    p = sub.add_parser("pull"); p.add_argument("deck"); p.add_argument("id"); p.add_argument("--into", required=True); p.add_argument("--force", action="store_true")
+    p.add_argument("--dirty", action="store_true", help="pull files the source commit does not hold (recorded in .pulled.json)")
+    p = sub.add_parser("sync"); p.add_argument("talk", nargs="?", default=str(ROOT))
+    p = sub.add_parser("check"); p.add_argument("talk", nargs="?", default=str(ROOT))
+    a = ap.parse_args()
+    return {"list": cmd_list, "pull": cmd_pull, "sync": cmd_sync, "check": cmd_check}[a.cmd](a)
+
+
+if __name__ == "__main__":
+    sys.exit(main())

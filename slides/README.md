@@ -1,0 +1,150 @@
+# Slide modules
+
+A slide module is one slide's behavior in a folder you can copy: `slides/<namespace>/<id>/slide.js` plus whatever
+assets it needs. A talk uses it as a case in `SECTIONS`, and overrides its text through props:
+
+```js
+cases: [
+  { use: 'core/venn', props: { labels: ['Architecture', 'Theater', 'Realtime Tech'] }, notes: 'Let it orbit twice.' },
+  { title: 'An ordinary slide', subtitle: 'still plain data', img: 'images/x.png', bullets: ['…'] },
+]
+```
+
+Everything else about a case still works on a module slide: the case's `notes`, `opt` / `keep` in talks that have an
+options picker, the step indicator, `?print`, `?shot=N`, `?notes`. (A module's own `notes` field is guidance for the
+talk author, not presenter notes; the timing estimate counts clicks, not a module's `duration`.) The deck owns navigation and chrome
+(`?chrome=full|quiet|none`); the module owns what is inside the slide.
+
+## Library vs talk
+
+- `slides/core/` in [ibrews/spatial-deck](https://github.com/ibrews/spatial-deck) is the shared library. Modules there
+  hold **no talk text**: every word on screen is a prop with a neutral default. (A push hook refuses talk content on
+  spatial-deck; keep it that way by construction.)
+- A talk repo keeps its own modules under its own namespace (`slides/pmre/…`) and pulled copies of library modules
+  under `slides/core/…`. A pulled copy carries `.pulled.json` (source repo, commit, file hashes), so a talk pins the
+  version it rehearsed with and nothing changes under it when the library moves. `pull` refuses a source whose
+  commit does not hold the files (untracked, modified, or a commit no remote branch has): commit and push the module
+  first, or pass `--dirty`, which pulls anyway and lists the reasons in `.pulled.json` under `dirty`.
+
+## The contract
+
+```js
+SD.defineSlide({
+  id: 'core/venn',          // "<namespace>/<id>", the folder it lives in
+  steps: 0,                 // clicks inside the slide; a number, or (props) => number. The deck asks for exactly this
+  duration: 9,              // seconds of entry motion (enables seek-based MP4 rendering)
+  props: { … },             // defaults; a case's props override them (shallow: an array prop is replaced whole)
+  css: `…`,                 // optional; injected once. Scope it under .sd-mod-<namespace>-<id>
+  assets: ['icon.png'],     // every file in the folder besides slide.js, so `slide.py pull <url>` can fetch them
+  shared: ['kit/sprite.js'],// files under slides/ that several modules use; pull copies them along
+  requires: { importmap: ['three'] }, // bare import specifiers the page must map (see Runtime dependencies)
+  provenance: ['harvardxr-keynote@7c6fbf5 index.html buildVennSlide'],
+  shows: ['avatar'],        // optional: what the slide already shows; a case can override with its own `shows`
+  render(el, props, ctx) {  // build the slide's DOM into el; return the instance (all methods optional)
+    return {
+      enter() {},           // the slide became active: play the entry motion from t = 0 (state = step 0)
+      step(n) {},           // click n of steps, called in order 1..steps
+      leave() {},           // the slide stopped being active (ctx.clock is already stopped)
+      seek(t) {},           // deterministic frame of the entry motion at t seconds: no timers, no Math.random
+      staticFrame() {},     // final frame with every step applied (default: instant enter + every step)
+    };
+  },
+});
+```
+
+`ctx` gives a module what it needs without reaching into the deck:
+
+| field | what it is |
+|---|---|
+| `ctx.instant` | true for `?print`, `?shot=N`, `?static`, `?reduced` and prefers-reduced-motion: jump every beat to its final frame, start no timers, make no sound |
+| `ctx.clock` | `after(ms,fn)`, `every(ms,fn)`, `raf(fn)`, `loop(fn(sec))`; the deck stops all of it on leave, so a slide never leaks timers |
+| `ctx.audio()` | an AudioContext (or null in instant mode); recreated after the deck closes sound on slide change |
+| `ctx.asset(p)` | URL of a file in the module's folder, wherever the module was pulled to |
+| `ctx.svg(tag, attrs)` | the deck's SVG element helper |
+| `ctx.look()` | current look id (`noir`, `sheet`, `house`, …) |
+| `ctx.props`, `ctx.steps`, `ctx.slide`, `ctx.params` | resolved props, resolved step count, the slide element, URL params |
+
+**Style from the look, not from the module.** Color a module with the deck's CSS variables (`var(--teal)`,
+`var(--text)`, `var(--ink)` …) so every `styles/` look recolors it. Hard-coded hex is only for pixel art that is the
+same in every look.
+
+**Lifecycle order.** On every slide change the old slide's `leave()` runs before the new slide's `enter()`; a click
+that arrives in the same task as the slide change enters the slide first. `enter()` runs again on every re-entry
+(going back included), from step 0.
+
+**Deck-level layers listen, they don't patch.** Every slide change (module or not) fires
+`document.addEventListener('sd:slide', e => …)` with `e.detail = {index, slide, type, section, year, module, shows}`.
+A persistent companion (a journey minimap, a walking sprite) reads the chapter from `section`/`year` and steps aside
+when `shows` includes what it would draw (`'avatar'`). It fires once per change; the first slide is announced when
+the page has finished parsing, so a listener added by any script in the page hears it. Not in `?print`/`?shot`.
+
+**Runtime dependencies.** A bare `import('three')` resolves only through the page's `<script type="importmap">`
+(for an iframe module, the frame document's own importmap). When the entry is missing, the import fails inside the
+module, which usually catches it and falls back, so nothing on screen says it broke. Declare every bare specifier in
+`requires.importmap` (a prefix entry such as `three/addons/` covers its subpaths). `slide.py check` fails a module
+that imports a bare specifier it does not declare, and a declared entry the host page does not map; `slide.py pull`
+prints the entry to add; the deck logs a console error at load for an inline module. A library you would rather not depend on a CDN for
+is vendored: ship the file in the module's folder, list it in `assets`, and import it by relative path.
+
+**Never register `slideSteps` yourself.** The deck builds a module's clicks from `steps`; a module that adds its own is
+exactly the "substeps came back by accident" failure, and the steps sweep fails it.
+
+## iframe modules
+
+A seekable HTML motion graphic is a module too: `SD.defineSlide({ id, frame: 'lane.html', steps, duration, props })`.
+The deck puts `slides/<ns>/<id>/lane.html` in a full-bleed iframe and drives it over `postMessage`, so an iframe gets
+the same slide-entered and next-click signals an inline module gets:
+
+```
+deck → frame  {sd:'spatial-deck', v:1, type:'enter' | 'step' | 'leave' | 'seek' | 'static', n?, t?, instant?}
+frame → deck  {sd:'spatial-deck', v:1, type:'ready', steps, duration}
+```
+
+The frame loads `../../sd-frame.js`, builds its DOM synchronously from `SDFrame.props(defaults)` (the deck passes props
+in the URL fragment, `#sdp=<json>`), then calls `SDFrame.init({ duration, steps, onStep })`. Steps are visible to CSS
+as `html[data-step="2"]`. Off-screen the frame parks on its final frame; on enter it replays from 0 without a reload
+(no white flash). It still works on its own: opened directly it plays, `?static` is the final frame, `?t=4` the
+frame at 4 s, which is what `tools/render_motion.mjs` uses for MP4s. postMessage works from `file://`, so this needs
+no server. Animate only with CSS animations or WAAPI (`document.getAnimations()` must see everything); the gotchas
+are in the KB technique *seekable-html-motion-graphics-for-decks*.
+
+**Motion names.** A case's `motion: '<name>'` is copied onto its module iframe as `data-motion`, so tools that
+keep per-graphic data (posters, MP4s, safe-zone fits) key on the talk's name, not the module's file name (two
+modules can both ship a `venn.html`).
+
+**Exports.** In `?print` and `?shot=N` an iframe module loads `?static` (its final frame). A deck that has rendered
+posters (`tools/render_motion.mjs`) can show those instead, which does not depend on the frame finishing loading:
+set `poster: 'media/motion/mp4/lane-poster{.look}.png'` on a case, or one pattern for the whole deck,
+`window.SD_POSTERS = 'media/motion/mp4/{motion}-poster{.look}.png'` (`{motion}` = the case's `motion` name,
+`{id}` = module id with `/` → `-`, `{.look}` = `''` for noir else `.sheet` etc.). A missing look poster falls back to
+the noir one, then to the live frame.
+
+## Tools
+
+```bash
+python3 tools/slide.py list ../pmre-2026-xr-chitect                 # modules, steps, durations, how often each is used
+python3 tools/slide.py list https://ibrews.github.io/pmre-2026-xr-chitect/
+python3 tools/slide.py pull ../spatial-deck core/venn --into ../my-talk      # copies files, writes .pulled.json, syncs
+python3 tools/slide.py sync ../my-talk                               # rewrite index.html's module list from slides/
+python3 tools/slide.py check ../my-talk                              # every use: resolves, every file + importmap dep declared
+node tools/sweep_deck.mjs http://localhost:8000/ /tmp/sweep 1920 1080 steps --steps   # screenshot EVERY substep
+bash tools/tests/test_steps.sh                                       # the steps lint must fail its broken fixtures
+bash tools/tests/test_slide_py.sh                                    # pull provenance + dependency checks must fail theirs
+```
+
+`sweep_deck.mjs --steps` presses the real ArrowRight key on every slide until the slide changes, screenshots each
+substep into the contact sheets (captioned `12 · step 3`), and fails the run when declared steps differ from
+reachable steps, when an iframe reports a different count than the deck asks for (or never reports at all), or when
+a click changes nothing on screen (a dead step). What it cannot see: a click that should exist but was never written.
+For an inline module, declared and reachable come from the same `steps`, so that comparison only catches code that
+adds clicks behind the deck's back; reading the captioned sheet against the speaker notes is the check for the rest.
+
+## Why it is built this way
+
+- **Classic scripts, not ES modules.** `import()` of a local file is blocked on `file://`, and a Spatial Deck has to
+  open by double-click. `slide.js` calls `SD.defineSlide()` from an ordinary `<script src>`, listed between the
+  `SD SLIDE MODULES` sentinels in `index.html` (`slide.py sync` keeps that list honest).
+- **`render()` returns an instance.** The same module can appear twice in one talk (two lane variants) without the
+  two slides sharing timers or state.
+- **Steps go through `slideSteps`.** Every existing deck feature that knows about clicks (indicator, timing estimate,
+  print step-completion, autoplay) works for modules with no extra code.

@@ -1,0 +1,8 @@
+/* Class-specific rig still viewer; real rendered frames from VRCineKit. */
+SD.defineSlide({id:'class/rigs',steps:p=>Math.max(0,(p.phases||[]).length-1),props:{title:'Camera rigs',subtitle:'',phases:[]},css:`
+.sd-mod-class-rigs .rig-view{width:90%;height:82%;display:flex;flex-direction:column;gap:16px;text-align:left}
+.sd-mod-class-rigs h2{font-size:calc(3*var(--vw))}.sd-mod-class-rigs .rig-content{display:flex;gap:32px;align-items:center;flex:1;min-height:0}
+.sd-mod-class-rigs img{width:65%;max-height:100%;object-fit:contain}.sd-mod-class-rigs .rig-copy{flex:1;font-size:calc(1.4*var(--vw));line-height:1.5}
+.sd-mod-class-rigs button{font:inherit;font-size:calc(1.1*var(--vw));padding:.4em .7em;background:transparent;color:var(--text);border:1px solid var(--dim);cursor:pointer}
+.sd-mod-class-rigs button[aria-pressed=true]{color:var(--teal);border-color:var(--teal)}.sd-mod-class-rigs nav{display:flex;gap:10px}
+`,render(s,p){s.innerHTML=`<div class="rig-view"><h2 class="case-title">${p.title}</h2><div class="rig-content"><img><div class="rig-copy"></div></div><nav>${p.phases.map((x,i)=>`<button data-i="${i}">${x.name}</button>`).join('')}</nav></div>`;let i=0;const show=n=>{i=n;const x=p.phases[i],img=s.querySelector('img');img.src=x.media;img.alt=x.alt;s.querySelector('.rig-copy').innerHTML=`<h3>${x.name}</h3><p>${x.proof}</p><p>${x.points.join('<br><br>')}</p>`;s.querySelectorAll('button').forEach((b,j)=>b.setAttribute('aria-pressed',j===i));};s.querySelector('nav').onclick=e=>{e.stopPropagation();const b=e.target.closest('button');if(b)show(+b.dataset.i);};show(0);return{enter(){show(0)},step(n){show(n)},staticFrame(){show(p.phases.length-1)}};}});

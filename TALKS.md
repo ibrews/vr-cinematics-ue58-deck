@@ -16,9 +16,9 @@ Thesis: A VR recording is a set, not a finished film. Measure its problems, fix 
 | # | Act | Slide | Tags | Pace | Sec | Clock |
 |---|---|---|---|---|---|---|
 | 0 | Cover | VR Cinematics for UE 5.8 | [A] | FLASH | 10 | 0:10 |
-| 1 | INTRO | By 1 pm you will have made this (`cold-open`) | [A] | DWELL · CORE | 30 | 0:40 |
+| 1 | INTRO | Today: record, re-shoot, render (`cold-open`) | [A] | DWELL · CORE | 30 | 0:40 |
 | 2 | PART I | Raw VR Footage Looks Bad. (`lesson-1`) | [A] | FLASH · CORE | 10 | 0:50 |
-| 3 | PART I | Shake. Tilt. Jump. FOV. (`p1-four`) | [A] | DWELL · CORE | 45 | 1:35 |
+| 3 | PART I | Shake. Tilt. Jump. Framing. (`p1-four`) | [A] | DWELL · CORE | 45 | 1:35 |
 | 4 | PART I | Same Take, Two Cameras (`p1-compare`) | [A] | DWELL · CORE | 40 | 2:15 |
 | 5 | PART I |  (`p1-before-after`) | [A] | DWELL · TRIM-1 | 30 | 2:45 |
 | 6 | PART I | Jitter 1.54° → 0.18° Seasick 2575 → 136 °/s² Roll 13.3° → 0 (`p1-numbers`) | [A] | DWELL · CORE | 45 | 3:30 |
@@ -38,7 +38,7 @@ Thesis: A VR recording is a set, not a finished film. Measure its problems, fix 
 | 20 | PART V | Draft Fast, Final Once (`p5-draft-final`) | [A] | DWELL · CORE | 60 | 12:15 |
 | 21 | PART V | The Three Render Traps (`p5-traps`) | [A] | DWELL · CORE | 60 | 13:15 |
 | 22 | PART V | Open the shutter at the frame. (`p5-shutter`) | [A] | DWELL · TRIM-3 | 50 | 14:05 |
-| 23 | PART VI | The Cameras of A Christmas Carol VR (`lesson-6`) | [A+B] | FLASH · CORE | 15 | 14:20 |
+| 23 | PART VI | Going Further: The ACCVR Cinematographer (`lesson-6`) | [A+B] | FLASH · CORE | 15 | 14:20 |
 | 24 | PART VI | Four Generations of Cameras (`c-timeline`) | [A+B] | DWELL · CORE | 60 | 15:20 |
 | 25 | PART VI | MagicCam: A Shot Is a Struct (`c-magiccam`) | [A+B] | DWELL · CORE | 75 | 16:35 |
 | 26 | PART VI | Damped Follow, and a Camera That Never Frames Nothing (`c-damp`) | [A+B] | DWELL · TRIM-1 | 60 | 17:35 |
@@ -63,7 +63,7 @@ Thesis: Treat the camera as data: a shot is a struct, a show is a recording, and
 | # | Act | Slide | Tags | Pace | Sec | Clock |
 |---|---|---|---|---|---|---|
 | 0 | Cover | How We Built the Cameras for A Christmas Carol VR | [B] | FLASH | 10 | 0:10 |
-| 1 | CAMERAS | The Cameras of A Christmas Carol VR (`lesson-6`) | [A+B] | FLASH · CORE | 15 | 0:25 |
+| 1 | CAMERAS | Going Further: The ACCVR Cinematographer (`lesson-6`) | [A+B] | FLASH · CORE | 15 | 0:25 |
 | 2 | CAMERAS | Four Generations of Cameras (`c-timeline`) | [A+B] | DWELL · CORE | 60 | 1:25 |
 | 3 | CAMERAS | MagicCam: A Shot Is a Struct (`c-magiccam`) | [A+B] | DWELL · CORE | 75 | 2:40 |
 | 4 | CAMERAS | Damped Follow, and a Camera That Never Frames Nothing (`c-damp`) | [A+B] | DWELL · TRIM-1 | 60 | 3:40 |
@@ -87,26 +87,27 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 **Talk A:**
 
 - Full talk: 26:45.
-- 12 min (19:10): cut `p1-before-after` (30s), `p2-no-headset` (30s), `c-damp` (60s), `c-preroll` (35s), `c-working-cut` (60s), `p3-by-hand` (45s), `camera-toy` (40s), `c-title-card` (60s), `c-vcam` (45s), `p5-shutter` (50s).
-- 10 min (19:10): no further cuts.
-- 8 min (19:10): no further cuts.
+- 110 min (26:45): no further cuts.
+- 100 min (26:45): no further cuts.
+- 90 min (26:45): no further cuts.
 
 **Talk B:**
 
 - Full talk: 12:50.
-- 12 min (11:50): cut `c-damp` (60s).
-- 10 min (9:35): cut `c-preroll` (35s), `c-working-cut` (60s), `camera-toy` (40s).
-- 8 min (7:50): cut `c-title-card` (60s), `c-vcam` (45s).
+- 110 min (12:50): no further cuts.
+- 100 min (12:50): no further cuts.
+- 90 min (12:50): no further cuts.
 
 ## Shared slide pool
 
-### `cold-open`: By 1 pm you will have made this
+### `cold-open`: Today: record, re-shoot, render
 
 **[A] [DWELL] 30s**
 
+*Synthetic practice take • five cameras added afterward*
 *Credit:* Class practice take, re-shot and rendered with the VR Cinematics kit &middot; Alex Coulombe Presents
 
-> **Notes:** Play this cold, with no intro. Twenty seconds. Then say: this is one recorded take of someone moving around in VR, and every shot you just saw is a new camera we added afterward. By one o'clock you will have done this from your own take. The four things to leave with: measure the shake, cut on teleports, level the horizon, and start a draft render before we hit the final. ALEX TO CONFIRM: the instructor on the day (the kit's run-of-show is written so a substitute can teach it).
+> **Notes:** CLASS CLOCK: 10:00–10:03 ET. Play the 20-second rendered practice edit. This is a seeded practice take, not headset or simulator footage. Every angle was added after the take. By noon the goal is to understand the same workflow on your own session. LIVE OPTION: Fort — open the prepared VRCineKit project, then /Game/VRCine/Sequences/LS_Edit in Sequencer; play the camera cuts.
 
 ### `lesson-1`: Raw VR Footage Looks Bad.
 
@@ -114,15 +115,15 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 
 - Four problems, and one take we can measure.
 
-> **Notes:** Part one is why you can't just publish what a headset records. Run of show 0:10 to 0:20.
+> **Notes:** CLASS CLOCK: 10:03–10:04 ET. Part one is why you can't just publish what a headset records.
 
-### `p1-four`: Shake. Tilt. Jump. FOV.
+### `p1-four`: Shake. Tilt. Jump. Framing.
 
 **[A] [DWELL] 45s**
 
-**On screen:** Shake. Tilt. Jump. FOV.
+**On screen:** Shake. Tilt. Jump. Framing.
 
-> **Notes:** Four problems. Shake: tracking noise and hand tremor at 72 to 120 Hz. Tilt: head roll tips the horizon, and roll is the biggest nausea source. Jump: teleports and snap turns are instant cuts the viewer never chose. FOV: the headset sees about 100 degrees and a 16:9 screen does not, so the framing was never meant for a flat frame. Hold the four words on screen and ask the chat which one they notice most in their own captures.
+> **Notes:** CLASS CLOCK: 10:04–10:06 ET. Four problems. Shake: tracking noise and hand tremor at 72 to 120 Hz. Tilt: head roll tips the horizon, and roll can make a flat-screen recording uncomfortable. Jump: teleports and snap turns are instant cuts the viewer never chose. FOV: the headset sees about 100 degrees and a 16:9 screen does not, so the framing was never meant for a flat frame. Hold the four words on screen and ask the chat which one they notice most in their own captures.
 
 ### `p1-compare`: Same Take, Two Cameras
 
@@ -132,7 +133,7 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 - Compare: Recorded head camera [media/class/ba-before.jpg] / Stabilized [media/class/ba-after.jpg]
 *Credit:* Class practice take &middot; VR Cinematics kit &middot; Alex Coulombe Presents
 
-> **Notes:** Drag the line across. Left is the recorded head camera, right is the same moment after the class tool. Same take, same frame. Don't explain the method yet: just let them see that the right side is a camera you could put in a trailer. Then play the next slide, which is the same comparison in motion.
+> **Notes:** CLASS CLOCK: 10:06–10:08 ET. Drag the line across. Left is the recorded head camera, right is the same moment after the class tool. Same take, same frame. Don't explain the method yet: just let them see that the right side is a camera you could put in a trailer. Then play the next slide, which is the same comparison in motion.
 
 ### `p1-before-after`: 
 
@@ -140,7 +141,7 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 
 *Credit:* Class practice take &middot; jitter 1.54 to 0.18 deg RMS &middot; VR Cinematics kit
 
-> **Notes:** Same comparison in motion, twenty seconds, looped. Watch the horizon on the left. This take is a seeded practice take built to have the same problems as a real recording, so every student has the identical numbers.
+> **Notes:** CLASS CLOCK: 10:08–10:09 ET. Same comparison in motion, twenty seconds, looped. Watch the horizon on the left. This take is a seeded practice take built to have the same problems as a real recording, so every student has the identical numbers.
 
 ### `p1-numbers`: Jitter 1.54° → 0.18° Seasick 2575 → 136 °/s² Roll 13.3° → 0
 
@@ -148,27 +149,30 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 
 **On screen:** Jitter 1.54° → 0.18° Seasick 2575 → 136 °/s² Roll 13.3° → 0
 
-> **Notes:** Measured, not eyeballed. On the class practice take: jitter is the RMS of what a 0.05 second Gaussian would remove, 1.54 degrees before and 0.18 after. Angular acceleration is the seasick number: 2575 degrees per second squared before, 136 after. Residual roll goes from 13.3 degrees to zero. Everyone will run the measure tool on their own copy and should see the same dialog. These numbers are from the seeded 20 second take at 90 Hz, verified on UE 5.8.2.
+> **Notes:** CLASS CLOCK: 10:09–10:10 ET. Measured, not eyeballed. On the class practice take: jitter is the RMS of what a 0.05 second Gaussian would remove, 1.54 degrees before and 0.18 after. Angular acceleration is the seasick number: 2575 degrees per second squared before, 136 after. Residual roll goes from 13.3 degrees to zero. Everyone will run the measure tool on their own copy and should see the same dialog. These numbers are from the seeded 20 second take at 90 Hz, verified on UE 5.8.2.
 
 ### `lesson-2`: Capture It.
 
 **[A] [FLASH] 10s**
 
-- Take Recorder keeps what you add. Replay keeps the world.
+- Take Recorder captures sources. Replay captures replicated state.
 
-> **Notes:** Part two, run of show 0:20 to 0:45. Three ways to get a take, and which one you want.
+> **Notes:** CLASS CLOCK: 10:10–10:11 ET. Part two Three ways to get a take, and which one you want.
 
 ### `p2-recorders`: Three Ways to Get a Take
 
 **[A] [DWELL] 60s**
 
 *Pick by what you need to re-shoot*
+- Take Recorder: sources and components into a Level Sequence
+- Unreal Replay: replicated state, then a new spectator viewpoint
+- Meta XR Simulator: OpenXR inputs; Session Capture is a separate input recording
 - **Take Recorder:** ○ Transforms and animation of sources; ○ Pawn as a source; head = Camera component; ○ Take rate = headset rate (90)
 - **Replay system:** ○ Whole game state: physics, NPCs, FX; ○ Fly any camera through it; ○ demorec, demostop, demoplay
 - **Meta XR Simulator:** ○ Same OpenXR session from keyboard/mouse; ○ Record & Replay captures input timing; ○ Admin install once: do it the day before
 - **Output:** A take you can re-shoot
 
-> **Notes:** Three routes. Take Recorder keeps transforms and animation for the sources you add: add the VR pawn while you're in VR Preview or PIE, and set the take frame rate to the headset rate, 90. The recorded head is a Camera component with a relative transform under the pawn root, so the class tool reads it in world space by scrubbing Sequencer. The Replay system keeps game state, so physics, NPCs and effects play back and you can fly any camera through it, but only replicated actors are recorded, and replay of VR head and hands is documented in the kit as untested. Meta XR Simulator drives the same OpenXR session from keyboard and mouse and has a Record and Replay capture, but its activation script writes a machine-wide OpenXR registry key and needs elevation, so install it the day before. ALEX TO CONFIRM: Meta XR plugin on stock 5.8 has an open Meta bug that modules fail to load; the kit lists it as untested.
+> **Notes:** CLASS CLOCK: 10:11–10:32 ET. Distinguish three recordings. Take Recorder is editable Sequencer tracks. Unreal Replay stores replicated state, not arbitrary world state or every HMD component. Simulator Session Capture stores runtime input timing, not a Level Sequence. Stock VR head/hand replication must be tested explicitly. LIVE OPTION: Fort — in the approved UOXR editor, Window > Cinematics > Take Recorder; add the active pawn, expand its Camera and MotionController components, set the take rate, record a short action, stop, and inspect tracks. For Replay, use demorec ClassTake, demostop, demoplay ClassTake in the game console. Verify the head and both hands actually move before calling the replay complete.
 
 ### `p2-no-headset`: No headset? You're not behind.
 
@@ -176,7 +180,7 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 
 **On screen:** No headset? You're not behind.
 
-> **Notes:** Say this out loud early. The practice take is built to have the same four problems as a real recording, and Build practice stage and take regenerates the identical seeded take for anyone whose numbers differ. Anything we do today works on it. Run of show 0:32.
+> **Notes:** CLASS CLOCK: 10:32–10:40 ET. Say this out loud early. The practice take is built to have the same four problems as a real recording, and Build practice stage and take regenerates the identical seeded take for anyone whose numbers differ. Anything we do today works on it.  At 10:40 take five minutes of Q&A; break 10:45–10:50. Resume at Part III.
 
 ### `lesson-3`: Stabilize It.
 
@@ -184,7 +188,7 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 
 - Three ideas and one number.
 
-> **Notes:** Part three, run of show 0:50 to 1:10. Do it by hand once so the one-click version is not magic.
+> **Notes:** CLASS CLOCK: 10:50–10:51 ET. Part three. Do it by hand once so the one-click version is not magic.
 
 ### `p3-quaternions`: Smooth rotation as quaternions.
 
@@ -192,7 +196,7 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 
 **On screen:** Smooth rotation as quaternions.
 
-> **Notes:** Idea one. Don't filter three Euler curves. They break near yaw 180 and at steep pitch, which is exactly where players look. Convert to quaternions, flip signs so neighbors agree, because q and minus q are the same rotation and averaging across a sign flip collapses to zero. Filter the four components, renormalize, convert back, and unwrap yaw so keys never jump from 359 to 0, which Sequencer would render as a full spin. Use a zero-phase filter: offline there is no reason to accept lag, and a lagging POV turns after the player did.
+> **Notes:** CLASS CLOCK: 10:51–10:54 ET. Idea one. Don't filter three Euler curves. They break near yaw 180 and at steep pitch, which is exactly where players look. Convert to quaternions, flip signs so neighbors agree, because q and minus q are the same rotation and averaging across a sign flip collapses to zero. Filter the four components, renormalize, convert back, and unwrap yaw so keys never jump from 359 to 0, which Sequencer would render as a full spin. Use a zero-phase filter: offline there is no reason to accept lag, and a lagging POV turns after the player did.
 
 ### `p3-teleport`: Never Smooth Across a Teleport
 
@@ -204,7 +208,7 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 - Smooth each segment on its own, then cut on the jump: a cut hides it for free
 - Measured on the class take: over 30 cm off the true path 10 frames early, versus under 3 cm segmented
 
-> **Notes:** Idea two, and the one most students have never seen. If you run a filter across a teleport, the camera starts drifting toward the destination about ten frames before the jump: a swoop through the set. On the class take it was more than 30 centimeters off the true path ten frames early, against under 3 centimeters when each segment is filtered separately. The class tool finds discontinuities with thresholds of 8 meters per second and 1000 degrees per second. Then it marks them with TAKE CUT markers, and you cut on those frames. Never cut anywhere else.
+> **Notes:** CLASS CLOCK: 10:54–10:57 ET. Idea two, and the one most students have never seen. If you run a filter across a teleport, the camera starts drifting toward the destination about ten frames before the jump: a swoop through the set. On the class take it was more than 30 centimeters off the true path ten frames early, against under 3 centimeters when each segment is filtered separately. The class tool finds discontinuities with thresholds of 8 meters per second and 1000 degrees per second. Then it marks them with TAKE CUT markers, and you cut on those frames. Never cut anywhere else.
 
 ### `p3-horizon`: Level the horizon. Nobody misses the roll.
 
@@ -212,7 +216,7 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 
 **On screen:** Level the horizon. Nobody misses the roll.
 
-> **Notes:** Idea three. Scale the residual roll toward zero. Roll is the biggest nausea source in head-camera footage and viewers do not miss it. On the class take it goes from 13.3 degrees to zero. One caution: a head-centered path from an avatar head bone needs about 14 centimeters of forward offset, or the POV renders from inside the head mesh. Take Recorder's HMD camera is already at the eyes.
+> **Notes:** CLASS CLOCK: 10:57–10:59 ET. Idea three. Scale the residual roll toward zero. Roll is the biggest nausea source in head-camera footage and viewers do not miss it. On the class take it goes from 13.3 degrees to zero. One caution: a head-centered path from an avatar head bone needs about 14 centimeters of forward offset, or the POV renders from inside the head mesh. Take Recorder's HMD camera is already at the eyes.
 
 ### `p3-by-hand`: By hand: Curve Editor → Filter Tool
 
@@ -220,7 +224,7 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 
 **On screen:** By hand: Curve Editor → Filter Tool
 
-> **Notes:** Students follow along here. Open the take's Camera or VR_Head transform curves in the Curve Editor, select the rotation channels, run the Euler filter first, then a Gaussian or an FFT low-pass. It works, per channel, and it is blind to teleports, which is why we then do the one-click version. Epic ships its own scripted version at Engine/Plugins/VirtualProduction/VirtualCamera/Content/Python/VCamSmooth.py: Bake plus Gaussian. Run of show 0:50.
+> **Notes:** CLASS CLOCK: 10:59–11:04 ET. Students follow along here. Open the take's Camera or VR_Head transform curves in the Curve Editor, select the rotation channels, run the Euler filter first, then a Gaussian or an FFT low-pass. It works, per channel, and it is blind to teleports, which is why we then do the one-click version. Epic ships its own scripted version at Engine/Plugins/VirtualProduction/VirtualCamera/Content/Python/VCamSmooth.py: Bake plus Gaussian. LIVE OPTION: Fort — open the recorded Level Sequence, select the Camera transform channels, open Curve Editor > Filter Tool, duplicate before filtering, split at a teleport, then compare at that boundary.
 
 ### `lesson-4`: Re-Shoot It.
 
@@ -228,7 +232,7 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 
 - A recording is a set. Put new cameras in it.
 
-> **Notes:** Part four, run of show 1:00 to 1:30. The payoff.
+> **Notes:** CLASS CLOCK: 11:04–11:05 ET. Part four The payoff.
 
 ### `p4-rigs`: Five Cameras, One Take
 
@@ -241,7 +245,7 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 - **Locked-off tripod:** A camera that never moves; The calm shot in the edit (50 mm) [media/class/rig-lockedoff.jpg]
 - **Low hero:** Looks up at the player; The heroic angle (18 mm) [media/class/rig-lowhero.jpg]
 
-> **Notes:** The five rigs the Re-shoot command builds on your take: stabilized POV at 12 millimeters, about 90 degrees horizontal; over-shoulder at 24; orbit at 35; locked-off tripod at 50; low hero at 18. Click through them. Each one is an ordinary CineCamera: right-click it and Pilot it to show it is just keys. The command also builds a first-pass edit in the Camera Cuts track, cutting on the TAKE CUT markers. The rig descriptions beyond the lens are my film-grammar shorthand, not measured claims. Run of show 1:10.
+> **Notes:** CLASS CLOCK: 11:05–11:15 ET. The five rigs the Re-shoot command builds on your take: stabilized POV at 12 millimeters, about 90 degrees horizontal; over-shoulder at 24; orbit at 35; locked-off tripod at 50; low hero at 18. Click through them. Each one is an ordinary CineCamera: right-click it and Pilot it to show it is just keys. The command also builds a first-pass edit in the Camera Cuts track, cutting on the TAKE CUT markers. The rig descriptions beyond the lens are my film-grammar shorthand, not measured claims. LIVE OPTION: Fort — VR Cinematics menu > Add re-shoot cameras; open the generated cinematic and switch among the five CineCameraActors. The class practice sequence is the prepared fallback.
 
 ### `p4-cut`: Cut on the teleport.
 
@@ -249,7 +253,7 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 
 **On screen:** Cut on the teleport.
 
-> **Notes:** Make it yours, run of show 1:20: re-time the Camera Cuts track, swap a shot to another camera, add one hand-keyed camera move. The rule is simple: always cut at a TAKE CUT marker. Those are the frames where the player teleported or snap turned, and a cut hides that jump for free. Every student should leave with a cut that differs from yours.
+> **Notes:** CLASS CLOCK: 11:15–11:19 ET. Make it yours re-time the Camera Cuts track, swap a shot to another camera, add one hand-keyed camera move. The rule is simple: always cut at a TAKE CUT marker. Those are the frames where the player teleported or snap turned, and a cut hides that jump for free. Every student should leave with a cut that differs from yours.
 
 ### `camera-toy`: Find the Shot Before You Fly
 
@@ -257,7 +261,7 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 
 *Drag the camera. Pick a lens. Take the shot.*
 
-> **Notes:** A concept demo, built for the Rome talk, so you can try the idea without a headset. A simple set: two actors, a lamp, a backdrop. Drag the camera on the plan, switch to an 85 millimeter lens and the framing tightens, put on a 2.39 mask, take a wide, a two-shot and a close-up. That's a shot list made before anyone flies anywhere. It needs WebGL; if the machine lacks it, the slide says so and you skip it. Say concept demo, never product.
+> **Notes:** CLASS CLOCK: 11:19–11:25 ET. A concept demo, built for the Rome talk, so you can try the idea without a headset. A simple set: two actors, a lamp, a backdrop. Drag the camera on the plan, switch to an 85 millimeter lens and the framing tightens, put on a 2.39 mask, take a wide, a two-shot and a close-up. That's a shot list made before anyone flies anywhere. It needs WebGL; if the machine lacks it, the slide says so and you skip it. Say concept demo, never product. Break 11:25–11:30. This widget is a concept illustration, not UOXR footage. LIVE OPTION: MBP — drag the camera in this slide, choose 24/85 mm, toggle the mask and take three shots.
 
 ### `lesson-5`: Render It.
 
@@ -265,19 +269,22 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 
 - Draft fast. Final once.
 
-> **Notes:** Part five, run of show 1:35 to 1:55. Start a draft render early so it is running while you talk.
+> **Notes:** CLASS CLOCK: 11:30–11:31 ET. Part five Start a draft render early so it is running while you talk.
 
 ### `p5-draft-final`: Draft Fast, Final Once
 
 **[A] [DWELL] 60s**
 
 *Same sequence, two presets*
+- Draft: 720p, MRQ_Draft preset; 600 frames in ~75 s incl. startup*; Check shot-start frames
+- Final: 1080p, 8 temporal samples; About 4 minutes*; Real motion blur from 90 Hz keys
+- Command line: Second process or another machine; Menu item prints the command; * GTX 1080 Ti, UE 5.8.2
 - **Draft:** ○ 720p, MRQ_Draft preset; ○ 600 frames in ~75 s incl. startup*; ○ Check shot-start frames
 - **Final:** ○ 1080p, 8 temporal samples; ○ About 4 minutes*; ○ Real motion blur from 90 Hz keys
 - **Command line:** ○ Second process or another machine; ○ Menu item prints the command; ○ * GTX 1080 Ti, UE 5.8.2
 - **Output:** Frames, then an edit
 
-> **Notes:** The kit has a Draft preset and a Final preset. Draft is 720p and finished a 600 frame edit in about 75 seconds including startup on the Toaster test machine, a GTX 1080 Ti on UE 5.8.2; Final is 1080p with 8 temporal samples and took about 4 minutes. Don't render the final live: play the pre-rendered file. The first render compiles shaders, about a minute, so do it in pre-flight. The Show command-line render menu item prints the command to render in a second process or on another machine. Movie Render Graph is the same settings as nodes: first segment to cut if you run late. Don't demo the path tracer: it needs hardware ray tracing and many student machines can't run it.
+> **Notes:** CLASS CLOCK: 11:31–11:38 ET. The kit has a Draft preset and a Final preset. Draft is 720p and finished a 600 frame edit in about 75 seconds including startup on the Toaster test machine, a GTX 1080 Ti on UE 5.8.2; Final is 1080p with 8 temporal samples and took about 4 minutes. Don't render the final live: play the pre-rendered file. The first render compiles shaders, about a minute, so do it in pre-flight. The Show command-line render menu item prints the command to render in a second process or on another machine. Movie Render Graph is the same settings as nodes: first segment to cut if you run late. Don't demo the path tracer: it needs hardware ray tracing and many student machines can't run it. LIVE OPTION: Fort — open Movie Render Queue, add the generated edit sequence, apply the draft preset, inspect output directory and camera cuts, then Render Local. Show Movie Render Graph as an alternate configuration path; no unverified MRG render claim.
 
 ### `p5-traps`: The Three Render Traps
 
@@ -288,7 +295,7 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 - Empty file names: {sequence_name} expands to nothing on the legacy command-line path
 - Black frames: an untitled level, or no Camera Cuts track
 
-> **Notes:** Three traps that all look like success. Zero frames: the output frame rate is below the sequence's. Empty file names: on the legacy command-line preset path in 5.8.2, the sequence name token resolves to an empty string and frames land in Saved/MovieRenders named .0000.png, so write the sequence name literally into the preset. Black frames: an untitled level cannot render, or the sequence has no Camera Cuts track, or every cut points at a missing camera. The contact sheet is the check: look at the start, middle and end frame of every shot before you trust a render.
+> **Notes:** CLASS CLOCK: 11:38–11:41 ET. Three traps that all look like success. Zero frames: the output frame rate is below the sequence's. Empty file names: on the legacy command-line preset path in 5.8.2, the sequence name token resolves to an empty string and frames land in Saved/MovieRenders named .0000.png, so write the sequence name literally into the preset. Black frames: an untitled level cannot render, or the sequence has no Camera Cuts track, or every cut points at a missing camera. The contact sheet is the check: look at the start, middle and end frame of every shot before you trust a render.
 
 ### `p5-shutter`: Open the shutter at the frame.
 
@@ -296,15 +303,15 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 
 **On screen:** Open the shutter at the frame.
 
-> **Notes:** A subtle one, for people rendering with temporal samples. The default shutter centers on the frame time, so on the first frame after a teleport or snap turn half the sub-samples see the old pose and half the new, and MRQ averages them into a see-through double exposure. Set MoviePipelineCameraSetting shutter_timing to FRAME_OPEN: the shutter opens at the frame and integrates forward, so a cut on the jump never ghosts. Verified on 5.8.2: frames on both sides of the snap turn and the teleport were clean single exposures, and real motion blur survived on a pan. In Movie Render Graph it is the camera node's ShutterTiming. Draft renders with one temporal sample can't show this, so check the final preset's shot-start frames.
+> **Notes:** CLASS CLOCK: 11:41–11:44 ET. A subtle one, for people rendering with temporal samples. The default shutter centers on the frame time, so on the first frame after a teleport or snap turn half the sub-samples see the old pose and half the new, and MRQ averages them into a see-through double exposure. Set MoviePipelineCameraSetting shutter_timing to FRAME_OPEN: the shutter opens at the frame and integrates forward, so a cut on the jump never ghosts. Verified on 5.8.2: frames on both sides of the snap turn and the teleport were clean single exposures, and real motion blur survived on a pan. In Movie Render Graph it is the camera node's ShutterTiming. Draft renders with one temporal sample can't show this, so check the final preset's shot-start frames.
 
-### `lesson-6`: The Cameras of A Christmas Carol VR
+### `lesson-6`: Going Further: The ACCVR Cinematographer
 
 **[A+B] [FLASH] 15s**
 
-- Five winters, one show, and a camera system that kept growing.
+- Automate the camera choices you just made in Sequencer.
 
-> **Notes:** Part six: how we built camera systems for A Christmas Carol VR, live, with two actors. Everything you just did on a practice take, we did on a real show.
+> **Notes:** CLASS CLOCK: 11:44–11:45 ET. Part six: how we built camera systems for A Christmas Carol VR, live, with two actors. Everything you just did on a practice take, we did on a real show.
 
 ### `c-timeline`: Four Generations of Cameras
 
@@ -312,11 +319,11 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 
 *Click a stop, or drag the playhead*
 - **2023 Shots on keys:** BP_MagicCamera: one struct per shot, called from the keyboard [media/carol/ScroogeDickens.jpg]
-- **December 2025 A cinematographer directs:** Jackie calls the shots; cameras generated per character [media/carol/xmas-carol.jpg]
+- **December 2025 A cinematographer directs:** A cinematographer directs; cameras frame specific characters [media/carol/xmas-carol.jpg]
 - **After the run The show is data:** The camera is free: any seat, a scrub timeline [media/video/carol-replay-marley.jpg]
 - **October 2026 Visitors shoot the show:** Shot slots, lenses, credits and a working cut [media/carol/dancing.jpg]
 
-> **Notes:** Four generations of camera tooling on one show. 2023: MagicCam, a Blueprint that calls shot presets from the keyboard. December 2025, the final run: a livestream with a human cinematographer directing, and cameras generated procedurally for specific characters. Then the show recorded as data, so the camera is free after the fact. And in October 2026 a cinematographer build that lets visitors shoot new coverage of the recording and assemble a working cut. Each generation made the previous one's assumption obvious: a camera is a rig you place, then a shot you call, then a decision you can revisit. The 2023 stop is dated from the Blueprint's last-saved version (December 2023); earlier seasons had cameras too, and I did not document them. ALEX TO CONFIRM.
+> **Notes:** CLASS CLOCK: 11:45–11:46 ET. Four generations of camera tooling on one show. 2023: MagicCam, a Blueprint that calls shot presets from the keyboard. December 2025, the final run: a livestream with a human cinematographer directing, and cameras generated procedurally for specific characters. Then the show recorded as data, so the camera is free after the fact. And in October 2026 a cinematographer build that lets visitors shoot new coverage of the recording and assemble a working cut. Each generation made the previous one's assumption obvious: a camera is a rig you place, then a shot you call, then a decision you can revisit. The 2023 stop is dated from the Blueprint's last-saved version (December 2023); earlier seasons had cameras too, and I did not document them. ALEX TO CONFIRM.
 
 ### `c-magiccam`: MagicCam: A Shot Is a Struct
 
@@ -328,7 +335,7 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 - Two-shot compositions: “Character A on Left, Character B on Right”
 - Height comes off a MetaHuman face socket, so the framing follows the performer
 
-> **Notes:** The 2023 camera Blueprint is called BP_MagicCamera. 601 nodes. Keys 0 to 9 and Alt combinations call SetCam0 through SetCam13, and PageUp and PageDown cycle through them. Every preset calls one macro, CamSet, with a struct: a height offset, a distance, a rotation, which performer to look at, which performer to snap to, left and right axis sockets, a socket to look at, a socket to offset from, and a look-at offset. The sockets are MetaHuman face sockets such as FACIAL_C_NoseTip, which is how a camera framed for a short performer stays framed for a tall one. The comment on the macro says Character A on the left, Character B on the right: these are two-shot compositions. The lesson for your project: make the shot a data structure, and have the key press just select one. The struct field list is exact; the card's wording of each field is a paraphrase of the Blueprint's pin names. Read from Alex's pasted T3D export with the blueprint-reader, not from the live project.
+> **Notes:** CLASS CLOCK: 11:46–11:47 ET. The 2023 camera Blueprint is called BP_MagicCamera. 601 nodes. Keys 0 to 9 and Alt combinations call SetCam0 through SetCam13, and PageUp and PageDown cycle through them. Every preset calls one macro, CamSet, with a struct: a height offset, a distance, a rotation, which performer to look at, which performer to snap to, left and right axis sockets, a socket to look at, a socket to offset from, and a look-at offset. The sockets are MetaHuman face sockets such as FACIAL_C_NoseTip, which is how a camera framed for a short performer stays framed for a tall one. The comment on the macro says Character A on the left, Character B on the right: these are two-shot compositions. The lesson for your project: make the shot a data structure, and have the key press just select one. The struct field list is exact; the card's wording of each field is a paraphrase of the Blueprint's pin names. Read from Alex's pasted T3D export with the blueprint-reader, not from the live project.
 
 ### `c-damp`: Damped Follow, and a Camera That Never Frames Nothing
 
@@ -340,20 +347,20 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 - Distance and height scale with the performer’s Z scale × 0.8
 - A hidden performer is swapped for an invisible “dummy Marley head”, so a camera never frames an empty spot
 
-> **Notes:** Three details from the same Blueprint that are worth stealing. A damped follow with toggles for distance damping and look-at, where a damping value of zero is a hard cut. On a camera switch it waits 0.2 seconds and then sets the actual damping equal to the target, so the new shot doesn't glide in from the old one. Distance and height are scaled by the performer's Z scale times 0.8. And a hidden performer is swapped for an invisible dummy Marley head, so a preset that frames a character who is currently offstage still has something to frame. The 2026 notes list the same guard as a port worth making: jump and preset targets should skip hidden characters.
+> **Notes:** CLASS CLOCK: 11:47–11:48 ET. Three details from the same Blueprint that are worth stealing. A damped follow with toggles for distance damping and look-at, where a damping value of zero is a hard cut. On a camera switch it waits 0.2 seconds and then sets the actual damping equal to the target, so the new shot doesn't glide in from the old one. Distance and height are scaled by the performer's Z scale times 0.8. And a hidden performer is swapped for an invisible dummy Marley head, so a preset that frames a character who is currently offstage still has something to frame. The 2026 notes list the same guard as a port worth making: jump and preset targets should skip hidden characters.
 
 ### `c-livestream`: The Livestream Desk
 
 **[A+B] [DWELL] 75s**
 
 *December 2025, the final run*
-- Jackie, the cinematographer, directs the livestream
+- A cinematographer directs the livestream
 - A second capture path records supplementary footage and documentation
 - Procedurally generated cameras for specific characters
 - VCam for Unreal Engine, and OBS for recording
 - A custom command toggles audience names on and off
 
-> **Notes:** For the final December 2025 run we livestreamed it. A human cinematographer, Jackie, directed the stream. Alex captured supplementary footage and documentation on a separate path while she did. The tools, per Alex's December 21, 2025 walkthrough video: cameras generated procedurally for specific characters, the virtual camera system, OBS for recording, and a custom console command that toggles audience member names, so the stream can show a name or not. He also notes the platform can capture and replay audience interactions, which isn't common in other platforms. ALEX TO CONFIRM: this slide is built from the one-line summary of that video in the knowledge base, not from the project; confirm which cameras were procedural and what 'supplementary footage' means before teaching it as a recipe.
+> **Notes:** CLASS CLOCK: 11:48–11:49 ET. For the final December 2025 run we livestreamed it. A human cinematographer directed the stream. Alex captured supplementary footage and documentation on a separate path alongside the stream. The tools, per Alex's December 21, 2025 walkthrough video: cameras generated procedurally for specific characters, the virtual camera system, OBS for recording, and a custom console command that toggles audience member names, so the stream can show a name or not. He also notes the platform can capture and replay audience interactions, which isn't common in other platforms. ALEX TO CONFIRM: this slide is built from the one-line summary of that video in the knowledge base, not from the project; confirm which cameras were procedural and what 'supplementary footage' means before teaching it as a recipe.
 
 ### `c-replay-video`: Replay: Any Seat in the House
 
@@ -361,7 +368,7 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 
 *Credit:* Replay recording of a performance &middot; A Christmas Carol VR &middot; Yu-Jun Yeh
 
-> **Notes:** Here is the replay system. We recorded the performances as data, using Unreal's replay recording of the live session: the motion capture, the cues and the spatial audio, not video. That means the camera is free after the fact. Scrub the timeline, fly anywhere, and see the controls on screen. Everything after this slide is about what it took to make a free camera in a replay actually reliable.
+> **Notes:** CLASS CLOCK: 11:49–11:50 ET. Here is the replay system. We recorded the performances as data, using Unreal's replay recording of the live session: the motion capture, the cues and the spatial audio, not video. That means the camera is free after the fact. Scrub the timeline, fly anywhere, and see the controls on screen. Everything after this slide is about what it took to make a free camera in a replay actually reliable.
 
 ### `c-replay-gotchas`: Replay Playback Will Bite You
 
@@ -373,7 +380,7 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 - Seek cooldown: time it from the completion callback, not the start
 - Pause by setting a world pauser: demo time and audio stop, the camera keeps flying
 
-> **Notes:** Four things any project that plays back DemoNetDriver replays will hit; we found them in the 2024 project on UE 5.4. One: on the first bunch, RepNotifies run before BeginPlay, so anything BeginPlay creates, like a dynamic material or a widget, isn't there yet. The symptom was every avatar the same green with no name until you skipped once. Fix: re-apply the replicated values at the end of BeginPlay. Two: a replay viewer is a client, so a live-session watchdog that watches a server heartbeat stalls during a seek or a long pause, and then calls JoinSession and kicks you out of the replay. 'Pressing skip too fast crashes it' was really one seek. Fix: gate every reconnect on is-playing-replay. Three: don't start another seek until about 30 frames and three-quarters of a second after the previous seek's completion callback. Four: there is no demopause command in 5.4; setting any PlayerState as the world pauser stops demo time and sound while the spectator camera keeps flying. These are from our KB technique note and verified in PIE on the 2024 project; your engine version and project may differ.
+> **Notes:** CLASS CLOCK: 11:50–11:51 ET. Four things any project that plays back DemoNetDriver replays will hit; we found them in the 2024 project on UE 5.4. One: on the first bunch, RepNotifies run before BeginPlay, so anything BeginPlay creates, like a dynamic material or a widget, isn't there yet. The symptom was every avatar the same green with no name until you skipped once. Fix: re-apply the replicated values at the end of BeginPlay. Two: a replay viewer is a client, so a live-session watchdog that watches a server heartbeat stalls during a seek or a long pause, and then calls JoinSession and kicks you out of the replay. 'Pressing skip too fast crashes it' was really one seek. Fix: gate every reconnect on is-playing-replay. Three: don't start another seek until about 30 frames and three-quarters of a second after the previous seek's completion callback. Four: there is no demopause command in 5.4; setting any PlayerState as the world pauser stops demo time and sound while the spectator camera keeps flying. These are from our KB technique note and verified in PIE on the 2024 project; your engine version and project may differ.
 
 ### `c-preroll`: A seek can bring back a scene that's gone.
 
@@ -381,7 +388,7 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 
 **On screen:** A seek can bring back a scene that's gone.
 
-> **Notes:** A beautiful one. When we sought into a beat where Dickens's parlor had already vanished, the replay restored the streamed-out parlor for about four seconds and replayed its dissolve, in the middle of someone's shot. Our fix is unglamorous: a five second pre-roll under a black card. The cut starts, you see black, the world settles, then the shot begins. Replay won't reconstruct streamed scenes on a seek, so design the edit around it.
+> **Notes:** CLASS CLOCK: 11:51–11:51 ET. A beautiful one. When we sought into a beat where Dickens's parlor had already vanished, the replay restored the streamed-out parlor for about four seconds and replayed its dissolve, in the middle of someone's shot. Our fix is unglamorous: a five second pre-roll under a black card. The cut starts, you see black, the world settles, then the shot begins. In this show, seek restoration needed a settling interval. Check the scene after each seek; the five-second pre-roll is a project-specific workaround.
 
 ### `c-cinematographer`: The Cinematographer Build
 
@@ -393,7 +400,7 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 - A whole-show working cut: scenes named from the show’s act and cue, credits, crash-safe saves, export
 - Weak edit, cut and loop, to review a cut in place
 
-> **Notes:** Last week's build, for a demo table at the MIA market in Rome. A plugin on top of the replay: pause that keeps the camera flying, the seek guard from the previous slide, and a gamepad map. Shot slots with lens presets of 24, 35, 50 and 85 millimeters, saved to a JSON file so a crash doesn't lose your shots. Then the redesign Alex asked for after testing the first version: a whole-show working cut, with scenes that start and end, named automatically from the show's act and cue, a Shot by credit on each shot, a title card, crash-safe saves and an export. The first version was a three-shot beat around Scrooge's arrival; it was superseded in two days. ALEX TO CONFIRM: it is built and playtested in PIE and packaged as SVN revision 849, but a physical gamepad hold and whether the audio sounds continuous through a cut had not been checked by a person when this was written, and the laptop that holds anything newer than r849 was offline. Say prototype, never product.
+> **Notes:** CLASS CLOCK: 11:51–11:52 ET. Going further: the ACCVR24 cinematographer prototype automates camera and cut decisions students can make by hand in Sequencer. Existing r853 receipt documents working lenses, shot add/replace, credits, crash-safe saves and keyboard regression; physical pad and audio continuity still need a person. It is UE 5.4.4 reference material, not proof of UE 5.8 compatibility. LIVE OPTION: Lenovo — only if the current ACCVR24 working-cut package has been located and smoke-tested, open CONTROLS.html beside the package; F2 sets Shot by, hold Up adds a shot, Ctrl+Home plays the working cut. Do not substitute the older ACCVR-52 project.
 
 ### `c-working-cut`: Cut Your Own Version of the Show
 
@@ -405,7 +412,7 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 - **Your shot Your shot, credited:** Add or replace a shot anywhere in the show [media/carol/marley.png]
 - **A new cut A new cut of the whole show:** Plays back in 2.39 with a WORKING CUT title card; survives a crash; exports [media/carol/dancing.jpg]
 
-> **Notes:** This is the whole system in four stops. The recording. You are the camera operator and pick a lens. Your shot, saved anywhere in the show and credited to you. And everyone's shots add up to a new cut of the whole show, played back as a film in 2.39. We showed this at the MIA market in Rome on October 22. Say prototype. The four stills are existing Carol images, not frames from the build. ALEX TO CONFIRM: match what you say to what you can demo today.
+> **Notes:** CLASS CLOCK: 11:52–11:53 ET. This is the whole system in four stops. The recording. You are the camera operator and pick a lens. Your shot, saved anywhere in the show and credited to you. And everyone's shots add up to a new cut of the whole show, played back as a film in 2.39. This was built for the MIA market in Rome in October 2026. Say prototype. The four stills are existing Carol images, not frames from the build. ALEX TO CONFIRM: match what you say to what you can demo today.
 
 ### `c-title-card`: The Title Card Is a Decision
 
@@ -417,7 +424,7 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 - Credit “Shot by”, not “DP”: visitors frame and cut, they don’t light
 - The version goes up per export, not per edit
 
-> **Notes:** A small decision that took research and is worth showing, because it's the same thinking as naming a render. Editing stages run assembly, rough cut, fine cut, picture lock; an unfinished film shown to an audience is a work-in-progress screening; a delivery head slate carries the title, version, date and running time. Director's Cut would have claimed the director made it. For the credit: a DP sets the look and runs camera and lighting crews, a camera operator frames, an editor decides when to cut. Visitors frame, choose the lens, and choose the cuts, but light nothing, and many people don't know the abbreviation DP. So the on-screen credit is Shot by, followed by names. The card shown is the template; the fields in angle brackets are filled per cut. Decision record: 2026-10-22.
+> **Notes:** CLASS CLOCK: 11:53–11:53 ET. A small decision that took research and is worth showing, because it's the same thinking as naming a render. Editing stages run assembly, rough cut, fine cut, picture lock; an unfinished film shown to an audience is a work-in-progress screening; a delivery head slate carries the title, version, date and running time. Director's Cut would have claimed the director made it. For the credit: a DP sets the look and runs camera and lighting crews, a camera operator frames, an editor decides when to cut. Visitors frame, choose the lens, and choose the cuts, but light nothing, and many people don't know the abbreviation DP. So the on-screen credit is Shot by, followed by names. The card shown is the template; the fields in angle brackets are filled per cut. Decision record: 2026-10-22.
 
 ### `c-vcam`: VCam is editor-only in UE 5.4.4.
 
@@ -425,7 +432,7 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 
 **On screen:** VCam is editor-only in UE 5.4.4.
 
-> **Notes:** We wanted a phone-as-camera feel in the cut. Findings: UE 5.1 moved the VirtualCamera plugin to Runtime, but the 5.4 docs still call it the in-editor Virtual Camera system; Live Link in a packaged game needs the messaging flag and Shipping is unsupported; and an Epic staff reply on a 2024 forum thread confirmed that enabling a VCam actor crashes a packaged build because it loads editor-only code. So in the project, V toggles the level's VCam component, the cinematographer plugin reads it by reflection with no module dependency, and packaged builds are unaffected and use the normal camera. That is the 5.4.4 answer. ALEX TO CONFIRM: not re-tested on 5.8, which is what this class uses; check before telling students it works or doesn't.
+> **Notes:** CLASS CLOCK: 11:53–11:54 ET. We wanted a phone-as-camera feel in the cut. Findings: UE 5.1 moved the VirtualCamera plugin to Runtime, but the 5.4 docs still call it the in-editor Virtual Camera system; Live Link in a packaged game needs the messaging flag and Shipping is unsupported; and an Epic staff reply on a 2024 forum thread confirmed that enabling a VCam actor crashes a packaged build because it loads editor-only code. So in the project, V toggles the level's VCam component, the cinematographer plugin reads it by reflection with no module dependency, and packaged builds are unaffected and use the normal camera. That is the 5.4.4 answer. ALEX TO CONFIRM: not re-tested on 5.8, which is what this class uses; check before telling students it works or doesn't.
 
 ### `c-lessons`: Cameras are data. Shots are structs. Credit the operator.
 
@@ -433,7 +440,7 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 
 **On screen:** Cameras are data. Shots are structs. Credit the operator.
 
-> **Notes:** The three things to take from five winters of cameras. Cameras are data: whether it's a Blueprint struct, a JSON file of shot slots, or a recorded replay, if the shot is data you can change your mind afterwards. Shots are structs: the key press only selects. And credit the operator: the moment a visitor can make a shot, the title card and the credit become part of the design.
+> **Notes:** CLASS CLOCK: 11:54–11:55 ET. The three things to take from five winters of cameras. Cameras are data: whether it's a Blueprint struct, a JSON file of shot slots, or a recorded replay, if the shot is data you can change your mind afterwards. Shots are structs: the key press only selects. And credit the operator: the moment a visitor can make a shot, the title card and the credit become part of the design.
 
 ### `lesson-7`: Homework & Next.
 
@@ -441,7 +448,7 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 
 - Make one shot. Credit yourself.
 
-> **Notes:** Run of show 1:55. Homework is in class/homework.md in the kit, we vote on the next topic, and there are office hours.
+> **Notes:** CLASS CLOCK: 11:55–11:56 ET.  Homework is in class/homework.md in the kit, we vote on the next topic, and there are office hours.
 
 ### `p7-homework`: Re-shoot your own take. Render a draft. Post it.
 
@@ -449,7 +456,7 @@ Generated from each slide's trim priority: `TRIM-1` slides go first, then `TRIM-
 
 **On screen:** Re-shoot your own take. Render a draft. Post it.
 
-> **Notes:** Homework is in the kit's class/homework.md; read it from there rather than from this slide. In short: record your own take if you can, stabilize it, re-shoot it, render a draft. Post a still or a clip in the class thread so we can look together. Vote on the next topic and book office hours.
+> **Notes:** CLASS CLOCK: 11:56–12:00 ET. Homework is in the kit's class/homework.md; read it from there rather than from this slide. In short: record your own take if you can, stabilize it, re-shoot it, render a draft. Post a still or a clip in the class thread so we can look together. Vote on the next topic and book office hours.
 
 ## Open [FILL] items
 

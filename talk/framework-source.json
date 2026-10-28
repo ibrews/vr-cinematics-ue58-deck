@@ -1,0 +1,7 @@
+{
+  "repository": "https://github.com/ibrews/spatial-deck",
+  "commit": "14256be",
+  "path": "index.html",
+  "copied_to": "tools/framework.html",
+  "migration": "class talk retains existing URL and talk/pitch.json source; modules imported with slide.py pull"
+}

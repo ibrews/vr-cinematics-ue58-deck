@@ -1,9 +1,10 @@
+<!-- Class override: modular slides live under slides/. tools/bake_deck.py owns rebuilding index.html from the pinned tools/framework.html and talk sources. Do not hand edit the generated runtime. -->
 # Spatial Deck — Codex Instructions
 
-## This fork: MIA 2026 Collective Pitch
+## This fork: VR Cinematics live class
 
 Talk content lives in `talk/pitch.json` (shared slide pool + two talks), NOT in a hand-edited SECTIONS array.
-Edit the JSON, then run `python tools/build_pitch.py` (validates, splices into index.html between the
+Edit the JSON, then run `python3 tools/bake_deck.py` (validates, splices into index.html between the
 PITCH-JSON sentinels, regenerates TALKS.md). Never hand-edit the JSON blob inside index.html or TALKS.md.
 `?talk=b` selects Talk B. Unverified facts stay as `[FILL: ...]` markers; never replace one with a guess.
 Speaker-only directions in notes start with `ALEX TO CONFIRM:` and always end the notes (excluded from the spoken-time estimate).

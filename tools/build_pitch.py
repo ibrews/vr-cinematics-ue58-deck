@@ -7,7 +7,7 @@ reference pool ids. This script
      pacing tag agrees with its seconds, no orphan pool slides, required fields present),
   2. splices it into index.html between the PITCH-JSON sentinels,
   3. writes TALKS.md: the readable script (pool table + both running orders + notes),
-  4. prints each talk's running time against the 10-minute slot.
+  4. prints each talk's running time against the two-hour slot.
 
 Exit code is non-zero on any validation error, so a broken pool never reaches index.html.
 
@@ -31,7 +31,7 @@ FLASH_MAX_SEC = 15
 DWELL_MIN_SEC = 30
 FILL = re.compile(r"\[FILL:[^\]]*\]")
 TRIMS = ("TRIM-1", "TRIM-2", "TRIM-3", "CORE")   # cut order: TRIM-1 goes first, CORE never
-TRIM_TARGETS = (12, 10, 8)                         # minutes for the 'if you only have N minutes' guide
+TRIM_TARGETS = (110, 100, 90)                         # minutes for the 'if you only have N minutes' guide
 MEDIA_RE = re.compile(r"\.(jpe?g|png|webp|gif|svg|mp4|webm)$", re.I)
 WORDS_PER_SEC = 2.5     # 150 wpm conversational delivery
 START, END = "/* PITCH-JSON START */", "/* PITCH-JSON END */"

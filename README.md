@@ -4,7 +4,7 @@ The slides for **VR Cinematics for UE 5.8**, a live class by [Alex Coulombe Pres
 
 **▶ View the deck:** https://ibrews.github.io/vr-cinematics-ue58-deck/ &nbsp;·&nbsp; **Camera case study only (conference cut):** https://ibrews.github.io/vr-cinematics-ue58-deck/?talk=b
 
-Built on [Spatial Deck](https://github.com/ibrews/spatial-deck), the single-file HTML presentation framework, with fork-local layouts ported from the [MIA 2026 Collective Pitch deck](https://github.com/ibrews/mia-2026-collective-pitch).
+Built on [Spatial Deck](https://github.com/ibrews/spatial-deck), the single-file HTML presentation framework, on modular framework `14256be`, with reusable camera and timeline modules pulled from the PMRE deck.
 
 ## Quickstart
 
@@ -14,7 +14,7 @@ cd vr-cinematics-ue58-deck
 python -m http.server 8750   # then open http://localhost:8750/
 ```
 
-Opening `index.html` directly also works. Edit `talk/pitch.json`, then run `python tools/build_pitch.py` to validate it and splice it into `index.html` (it also writes `TALKS.md`, the readable script).
+Opening `index.html` directly also works. Edit `talk/pitch.json`, then run `python3 tools/bake_deck.py` to validate it and splice it into `index.html` (it also writes `TALKS.md`, the readable script).
 
 ## What is in it
 
@@ -41,3 +41,11 @@ The slides are anchor points for a live Unreal session; the minute-by-minute run
 ## Credits
 
 **Alex Coulombe Presents** · framework: [Spatial Deck](https://github.com/ibrews/spatial-deck). *A Christmas Carol VR* performed live by Ari Tarr and Debbie Deer; adapted for VR by David Gochfeld, based on the adaptation by Robert Barry Fleming. Class practice-take footage is from the VR Cinematics kit.
+
+## Live class, 2026-10-28
+
+Alex teaches 10:00–12:00 ET. The CLASS CLOCK in each slide note includes demonstration, exercise and question time. Breaks: 10:45–10:50 and 11:25–11:30. The ACCVR case study is the going-further segment; skip history detail first if a core demo needs time. Every live demonstration is optional and has a `LIVE OPTION: <machine> — <steps>` cue. The recorded practice take is synthetic and labeled as such.
+
+`talk/pitch.json` owns content, `talk/head.html` owns metadata, and `talk/class.css` owns class styles. `tools/framework.html` pins the unmodified modular framework source; `tools/bake_deck.py` regenerates the runtime and syncs the slide modules. Imported module folders carry `.pulled.json` provenance. The deck uses quiet chrome by default.
+
+Migration review: [all slides and substeps](review/migration/report.json), [contact sheet](review/migration/contact-sheet-0.jpg). The 42-slide framework count includes settings and hidden end markers; the class has 37 content slides, its cover and close.

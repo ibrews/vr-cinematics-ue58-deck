@@ -1,3 +1,9 @@
+# VR Cinematics class migration, 2026-10-28
+
+Read `README.md` and `AGENTS.md` first. Content: `talk/pitch.json`. Build: `python3 tools/bake_deck.py`. This fork pins modular Spatial Deck main `14256be` in `tools/framework.html`; camera-toy and working-cut are provenance-recorded PMRE pulls. Class modules are `slides/class/compare` and `slides/class/rigs`. Every slide has notes, with explicit CLASS CLOCK and LIVE OPTION cues. Keep media local, practice footage labeled synthetic, and student kit access private unless Alex authorizes distribution.
+
+The following framework reference describes the baseline architecture.
+
 # Spatial Deck — AI Agent Handoff Prompt
 
 > **Last updated:** 2026-05-06
