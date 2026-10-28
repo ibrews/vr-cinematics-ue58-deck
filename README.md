@@ -49,3 +49,7 @@ Alex teaches 10:00–12:00 ET. The CLASS CLOCK in each slide note includes demon
 `talk/pitch.json` owns content, `talk/head.html` owns metadata, and `talk/class.css` owns class styles. `tools/framework.html` pins the unmodified modular framework source; `tools/bake_deck.py` regenerates the runtime and syncs the slide modules. Imported module folders carry `.pulled.json` provenance. The deck uses quiet chrome by default.
 
 Migration review: [all slides and substeps](review/migration/report.json), [contact sheet](review/migration/contact-sheet-0.jpg). The 42-slide framework count includes settings and hidden end markers; the class has 37 content slides, its cover and close.
+
+## Talk-over videos
+
+Eight embedded clips are now available across the class: the original practice edit, smoothing comparison, five-camera montage, the reused UOXR automated-menu demo, Carol replay, Carol angle/working-cut excerpt and full trailer. The additional UOXR pinch clip is included for optional use. [Video manifest](talk/video-manifest.json) records sources, durations and hashes. All start muted; the Carol trailer retains audio for optional playback. Original kit renders are from UE 5.8.2; the ACCVR prototype is UE 5.4.4. These clips do not establish a new same-session XR recording or Aura MetaHuman acceptance.

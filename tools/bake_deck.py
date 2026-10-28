@@ -34,7 +34,7 @@ s=s.replace('// Navigation', "document.querySelectorAll('#deck .big-text').forEa
 # Hide framework ending slides; keep a complete class close.
 s=s.replace('// Navigation',"allSlides.forEach(s=>{if(['bonus','map'].includes(s.dataset.type))s.dataset.hidden='1';});\n// Navigation",1)
 s=s.replace('// 3D Monocle on Bonus slide\n(function(){','// 3D Monocle on Bonus slide\n(function(){return; // class has no bonus monocle',1)
-s=s.replace('</head>','<style>'+ (R/'talk/class.css').read_text()+'</style>\n</head>')
+s=s.replace('</head>','<style>'+ (R/'talk/class.css').read_text()+'</style>\n</head>',1)
 (R/'index.html').write_text(s)
 for args in [['build_pitch.py'],['apply_look.py','--default','noir','--chrome','quiet'],['slide.py','sync',str(R)],['check_branding.py'],['slide.py','check',str(R)]]:
     subprocess.run([sys.executable,str(R/'tools'/args[0]),*args[1:]],check=True,cwd=R)
