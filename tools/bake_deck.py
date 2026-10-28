@@ -41,6 +41,8 @@ video_old = 'else if(/\\.(mp4|webm)$/i.test(src)){media=`<video class="full-medi
 video_new = 'else if(/\\.(mp4|webm)$/i.test(src)){\n        const attr=v=>String(v||\'\').replace(/[&"<>]/g,ch=>({\'&\':\'&amp;\',\'"\':\'&quot;\',\'<\':\'&lt;\',\'>\':\'&gt;\'}[ch]));\n        const label=attr(c.alt),credit=attr(c.credit),q=new URLSearchParams(location.search),still=q.has(\'shot\')||q.has(\'print\');\n        media=still&&c.poster?`<img class="full-media" src="${attr(c.poster)}" alt="${label}" title="${credit}">`:`<video class="full-media" src="${attr(src)}"${c.poster?` poster="${attr(c.poster)}"`:\'\'} aria-label="${label}" title="${credit}" autoplay loop muted playsinline>${label}</video>`;\n      }'
 assert video_old in s, "Pinned full-video builder changed"
 s = s.replace(video_old, video_new, 1)
+# Cloud notes sync is explicit opt-in; an absent optional file must not log a 404.
+s=s.replace("async function loadNotesConfig(){", "async function loadNotesConfig(){\n  if(!new URLSearchParams(location.search).has('sync'))return null;",1)
 (R/'index.html').write_text(s)
 for args in [['build_pitch.py'],['apply_look.py','--default',json.loads(p).get('default_look','noir'),'--chrome','quiet'],['slide.py','sync',str(R)],['check_branding.py'],['slide.py','check',str(R)]]:
     subprocess.run([sys.executable,str(R/'tools'/args[0]),*args[1:]],check=True,cwd=R)

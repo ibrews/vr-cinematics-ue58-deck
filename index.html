@@ -4028,6 +4028,7 @@ function _onSlideChange(newIdx){
 // =====================================================================
 window._notesConfig=null;
 async function loadNotesConfig(){
+  if(!new URLSearchParams(location.search).has('sync'))return null;
   if(window._notesConfig)return window._notesConfig;
   try{
     const r=await fetch('notes-config.json',{cache:'no-store'});

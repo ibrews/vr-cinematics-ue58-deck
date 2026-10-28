@@ -35,6 +35,9 @@ Save (`⌘S`). Name the project something like "Spatial Deck Notes Sync".
 
 ## 5. Save the URL locally
 
+Enable cloud sync explicitly with `?sync` (or `?notes&sync`) in this class fork.
+Without `sync`, notes stay local and no optional configuration file is requested.
+
 Create `notes-config.json` in the repo root:
 
 ```json
