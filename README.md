@@ -53,3 +53,15 @@ Migration review: [all slides and substeps](review/migration/report.json), [cont
 ## Talk-over videos
 
 Eight embedded clips are now available across the class: the original practice edit, smoothing comparison, five-camera montage, the reused UOXR automated-menu demo, Carol replay, Carol angle/working-cut excerpt and full trailer. The additional UOXR pinch clip is included for optional use. [Video manifest](talk/video-manifest.json) records sources, durations and hashes. All start muted; the Carol trailer retains audio for optional playback. Original kit renders are from UE 5.8.2; the ACCVR prototype is UE 5.4.4. These clips do not establish a new same-session XR recording or Aura MetaHuman acceptance.
+
+## Change the default look
+
+Preview all 13 looks in the [look gallery](https://ibrews.github.io/vr-cinematics-ue58-deck/review/looks/). Henry Keyser’s reviewer favorites are memo, swiss, cyanotype and gallery.
+
+In `tools/bake_deck.py`, change exactly this line (currently unchanged noir):
+
+```python
+DEFAULT_LOOK = "noir"  # Change this line, then rebake.
+```
+
+Replace `noir` with a gallery look ID, run `python3 tools/bake_deck.py`, and commit the bake config and generated `index.html`. A URL such as `?look=memo` previews a look without changing the default.
