@@ -1,0 +1,6 @@
+{
+  "chrome": "quiet",
+  "visible": 35,
+  "empty": [],
+  "checked": "all visible slides via getSlideNotes runtime API"
+}
