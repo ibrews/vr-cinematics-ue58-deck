@@ -578,8 +578,8 @@
       "trim": "CORE",
       "pace": "DWELL",
       "sec": 60,
-      "title": "Draft Fast, Final Once",
-      "subtitle": "New UE 5.8.3 draft • recorded camera • three picked angles",
+      "title": "A Draft Is for Checking Angles",
+      "subtitle": "1 Wide: establishes the room · 2 Medium: the instruction wall · 3 Close: crops the text, so reframe it before the final",
       "input": "Your\nsequence",
       "output": "Frames, then\nan edit",
       "phases": [
@@ -635,7 +635,7 @@
           ]
         }
       ],
-      "notes": "CLASS CLOCK: 11:31–11:38 ET. Play the new 4.9-second MRQ draft and let it loop. It comes from the actual stock Take Recorder camera exercise in the UOXR take-home branch: record, scrub the saved take, choose three viewport angles, build the Sequencer cut, render 147 frames at 30 fps. This is scripted desktop camera motion, not a fresh XR head/hand recording. Point out the third angle crops the OPENXR header: inspect and reframe a draft before committing to a final. The original twenty-second seeded kit render remains the polished cold open. Draft is 720p; Final is 1080p with eight temporal samples. Render times depend on shader caches; use the prepared clip during class. The source-camera cut must not override a master edit, so the plugin preserves the source and creates a performance copy without its camera-cut track. The flat command-line route disables HMD and debug view modes; these are process-local settings. LIVE OPTION: Lenovo — launch the prepared desktop project with VRCineTools and Takes enabled and -nohmd, open /VRCineTools/Takes/ClassRecorded_01_PickedCut, inspect its three Camera Cuts, reframe PickedCam_03, then use Movie Render Queue with MRQ_Draft. Show Movie Render Graph as an alternate configuration path; no MRG render claim.",
+      "notes": "SAY: This clip isn't about beautiful shots. It proves the pipeline: a recorded take, three angles picked from the viewport, cut in Sequencer, rendered by Movie Render Queue as a draft.\nSAY: Angle one is a wide establishing shot of the room, angle two is a medium on the instruction wall, and angle three is a close-up that crops the text badly.\nSAY: That bad third angle is the point. The draft cost seconds, and it caught a framing mistake before an expensive final render.\n\nCLASS CLOCK: 11:31–11:38 ET. Play the new 4.9-second MRQ draft and let it loop. It comes from the actual stock Take Recorder camera exercise in the UOXR take-home branch: record, scrub the saved take, choose three viewport angles, build the Sequencer cut, render 147 frames at 30 fps. This is scripted desktop camera motion, not a fresh XR head/hand recording. Point out the third angle crops the OPENXR header: inspect and reframe a draft before committing to a final. The original twenty-second seeded kit render remains the polished cold open. Draft is 720p; Final is 1080p with eight temporal samples. Render times depend on shader caches; use the prepared clip during class. The source-camera cut must not override a master edit, so the plugin preserves the source and creates a performance copy without its camera-cut track. The flat command-line route disables HMD and debug view modes; these are process-local settings. LIVE OPTION: Lenovo — launch the prepared desktop project with VRCineTools and Takes enabled and -nohmd, open /VRCineTools/Takes/ClassRecorded_01_PickedCut, inspect its three Camera Cuts, reframe PickedCam_03, then use Movie Render Queue with MRQ_Draft. Show Movie Render Graph as an alternate configuration path; no MRG render claim.",
       "bullets": [
         "Draft: 720p; inspect every shot before final",
         "Final: 1080p and eight temporal samples",
@@ -644,8 +644,8 @@
       "img": "media/class/uoxr-recorded-picked-cut-mrq.mp4",
       "poster": "media/class/uoxr-recorded-picked-cut-mrq.jpg",
       "layout": "full",
-      "alt": "A new 4.9-second MRQ draft in UOXR, with three chosen static camera angles.",
-      "credit": "This class lane, UE 5.8.3 • scripted desktop camera recording"
+      "alt": "A 4.9-second 720p Movie Render Queue draft of the empty UOXR tutorial room in three static angles: a wide establishing shot, a medium shot of the instruction wall, and a close shot that badly crops the OPENXR text.",
+      "credit": "Takeaway: render a cheap draft, look at every angle, fix the bad one, then render the final once. · UE 5.8.3 class run, scripted desktop camera, no performer"
     },
     {
       "id": "p5-traps",

@@ -36,7 +36,7 @@ Thesis: A VR recording is a set, not a finished film. Measure its problems, fix 
 | 18 | PART IV | Cut on the teleport. (`p4-cut`) | [A] | DWELL · CORE | 40 | 10:45 |
 | 19 | PART IV | Find the Shot Before You Fly (`camera-toy`) | [A+B] | DWELL · TRIM-2 | 40 | 11:25 |
 | 20 | PART V | Render It. (`lesson-5`) | [A] | FLASH · CORE | 10 | 11:35 |
-| 21 | PART V | Draft Fast, Final Once (`p5-draft-final`) | [A] | DWELL · CORE | 60 | 12:35 |
+| 21 | PART V | A Draft Is for Checking Angles (`p5-draft-final`) | [A] | DWELL · CORE | 60 | 12:35 |
 | 22 | PART V | The Three Render Traps (`p5-traps`) | [A] | DWELL · CORE | 60 | 13:35 |
 | 23 | PART V | Open the shutter at the frame. (`p5-shutter`) | [A] | DWELL · TRIM-3 | 50 | 14:25 |
 | 24 | PART VI | Going Further: The ACCVR Cinematographer (`lesson-6`) | [A+B] | FLASH · CORE | 15 | 14:40 |
@@ -281,11 +281,11 @@ Cut for time or superseded. To restore one, add its id back to a talk's act (or 
 
 > **Notes:** CLASS CLOCK: 11:30–11:31 ET. Part five Start a draft render early so it is running while you talk.
 
-### `p5-draft-final`: Draft Fast, Final Once
+### `p5-draft-final`: A Draft Is for Checking Angles
 
 **[A] [DWELL] 60s**
 
-*New UE 5.8.3 draft • recorded camera • three picked angles*
+*1 Wide: establishes the room · 2 Medium: the instruction wall · 3 Close: crops the text, so reframe it before the final*
 - Draft: 720p; inspect every shot before final
 - Final: 1080p and eight temporal samples
 - New class run: 147 frames, three chosen angles
@@ -293,9 +293,13 @@ Cut for time or superseded. To restore one, add its id back to a talk's act (or 
 - **Final:** ○ 1080p, 8 temporal samples; ○ About 4 minutes*; ○ Real motion blur from 90 Hz keys
 - **Command line:** ○ Second process or another machine; ○ Menu item prints the command; ○ * GTX 1080 Ti, UE 5.8.2
 - **Output:** Frames, then an edit
-*Credit:* This class lane, UE 5.8.3 • scripted desktop camera recording
+*Credit:* Takeaway: render a cheap draft, look at every angle, fix the bad one, then render the final once. · UE 5.8.3 class run, scripted desktop camera, no performer
 
-> **Notes:** CLASS CLOCK: 11:31–11:38 ET. Play the new 4.9-second MRQ draft and let it loop. It comes from the actual stock Take Recorder camera exercise in the UOXR take-home branch: record, scrub the saved take, choose three viewport angles, build the Sequencer cut, render 147 frames at 30 fps. This is scripted desktop camera motion, not a fresh XR head/hand recording. Point out the third angle crops the OPENXR header: inspect and reframe a draft before committing to a final. The original twenty-second seeded kit render remains the polished cold open. Draft is 720p; Final is 1080p with eight temporal samples. Render times depend on shader caches; use the prepared clip during class. The source-camera cut must not override a master edit, so the plugin preserves the source and creates a performance copy without its camera-cut track. The flat command-line route disables HMD and debug view modes; these are process-local settings. LIVE OPTION: Lenovo — launch the prepared desktop project with VRCineTools and Takes enabled and -nohmd, open /VRCineTools/Takes/ClassRecorded_01_PickedCut, inspect its three Camera Cuts, reframe PickedCam_03, then use Movie Render Queue with MRQ_Draft. Show Movie Render Graph as an alternate configuration path; no MRG render claim.
+> **Notes:** SAY: This clip isn't about beautiful shots. It proves the pipeline: a recorded take, three angles picked from the viewport, cut in Sequencer, rendered by Movie Render Queue as a draft.
+SAY: Angle one is a wide establishing shot of the room, angle two is a medium on the instruction wall, and angle three is a close-up that crops the text badly.
+SAY: That bad third angle is the point. The draft cost seconds, and it caught a framing mistake before an expensive final render.
+
+CLASS CLOCK: 11:31–11:38 ET. Play the new 4.9-second MRQ draft and let it loop. It comes from the actual stock Take Recorder camera exercise in the UOXR take-home branch: record, scrub the saved take, choose three viewport angles, build the Sequencer cut, render 147 frames at 30 fps. This is scripted desktop camera motion, not a fresh XR head/hand recording. Point out the third angle crops the OPENXR header: inspect and reframe a draft before committing to a final. The original twenty-second seeded kit render remains the polished cold open. Draft is 720p; Final is 1080p with eight temporal samples. Render times depend on shader caches; use the prepared clip during class. The source-camera cut must not override a master edit, so the plugin preserves the source and creates a performance copy without its camera-cut track. The flat command-line route disables HMD and debug view modes; these are process-local settings. LIVE OPTION: Lenovo — launch the prepared desktop project with VRCineTools and Takes enabled and -nohmd, open /VRCineTools/Takes/ClassRecorded_01_PickedCut, inspect its three Camera Cuts, reframe PickedCam_03, then use Movie Render Queue with MRQ_Draft. Show Movie Render Graph as an alternate configuration path; no MRG render claim.
 
 ### `p5-traps`: The Three Render Traps
 
