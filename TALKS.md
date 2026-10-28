@@ -180,7 +180,7 @@ Cut for time or superseded. To restore one, add its id back to a talk's act (or 
 - Unreal Replay: replicated state, then a new spectator viewpoint
 - Meta XR Simulator: OpenXR inputs; Session Capture is a separate input recording
 - **Take Recorder:** ○ Transforms and animation of sources; ○ Pawn as a source; head = Camera component; ○ Take rate = headset rate (90)
-- **Replay system:** ○ Whole game state: physics, NPCs, FX; ○ Fly any camera through it; ○ demorec, demostop, demoplay
+- **Replay system:** ○ Replicated state: physics, NPCs, FX; ○ Fly any camera through it; ○ demorec, demostop, demoplay
 - **Meta XR Simulator:** ○ Same OpenXR session from keyboard/mouse; ○ Record & Replay captures input timing; ○ Admin install once: do it the day before
 - **Output:** A take you can re-shoot
 
