@@ -61,7 +61,7 @@ Expected: `{"ok":true,"result":{"pong":true,"ts":...}}`
 
 ## 7. Open the deck
 
-Open `index.html?notes` in your phone browser. First load:
+Open `index.html?notes&sync` in your phone browser. First load:
 - Reads `notes-config.json`
 - Calls `seedNotes` with the current `SECTIONS` notes (only seeds if the sheet is empty for this deckId)
 - Renders the phone view

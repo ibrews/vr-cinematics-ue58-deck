@@ -2,7 +2,8 @@
 """Inline the Spatial Deck style library (styles/) into a deck so its look can be picked at runtime.
 
 The library stays as separate source files (styles/base.css, styles/looks/<id>/look.{css,json,md}); the deck stays a
-single file. This writes, between sentinels, into the deck's index.html:
+single file. Fonts use installed/local faces and the CSS system fallbacks; no remote fonts are injected.
+This writes, between sentinels, into the deck's index.html:
   - one <style> with base.css + every look.css, with the scope
     placeholders expanded (`:look` -> body[data-look="<id>"], `:looked` -> any look except noir, at zero added specificity);
   - the look runtime: picks the look from ?look=<id>, else body[data-look] (a talk's options picker may set it),

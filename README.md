@@ -14,6 +14,8 @@ cd vr-cinematics-ue58-deck
 python -m http.server 8750   # then open http://localhost:8750/
 ```
 
+The deck and every look work offline: base fonts are self-hosted, and alternate looks use installed fonts or system fallbacks. Cloud speaker-notes sync is opt-in via `?sync` (or `?notes&sync`); ordinary loads keep notes local without probing for a config file.
+
 Opening `index.html` directly also works. Edit `talk/pitch.json`, then run `python3 tools/bake_deck.py` to validate it and splice it into `index.html` (it also writes `TALKS.md`, the readable script).
 
 ## What is in it
