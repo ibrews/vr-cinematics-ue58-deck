@@ -36,6 +36,11 @@ s=s.replace('// Navigation', "document.querySelectorAll('#deck .big-text').forEa
 s=s.replace('// Navigation',"allSlides.forEach(s=>{if(['bonus','map'].includes(s.dataset.type))s.dataset.hidden='1';});\n// Navigation",1)
 s=s.replace('// 3D Monocle on Bonus slide\n(function(){','// 3D Monocle on Bonus slide\n(function(){return; // class has no bonus monocle',1)
 s=s.replace('</head>','<style>'+ (R/'talk/class.css').read_text()+'</style>\n</head>',1)
+# Preserve fork-local clip metadata and use the supplied still in static exports.
+video_old = 'else if(/\\.(mp4|webm)$/i.test(src)){media=`<video class="full-media" src="${src}" autoplay loop muted playsinline></video>`;}'
+video_new = 'else if(/\\.(mp4|webm)$/i.test(src)){\n        const attr=v=>String(v||\'\').replace(/[&"<>]/g,ch=>({\'&\':\'&amp;\',\'"\':\'&quot;\',\'<\':\'&lt;\',\'>\':\'&gt;\'}[ch]));\n        const label=attr(c.alt),credit=attr(c.credit),q=new URLSearchParams(location.search),still=q.has(\'shot\')||q.has(\'print\');\n        media=still&&c.poster?`<img class="full-media" src="${attr(c.poster)}" alt="${label}" title="${credit}">`:`<video class="full-media" src="${attr(src)}"${c.poster?` poster="${attr(c.poster)}"`:\'\'} aria-label="${label}" title="${credit}" autoplay loop muted playsinline>${label}</video>`;\n      }'
+assert video_old in s, "Pinned full-video builder changed"
+s = s.replace(video_old, video_new, 1)
 (R/'index.html').write_text(s)
 for args in [['build_pitch.py'],['apply_look.py','--default',json.loads(p).get('default_look','noir'),'--chrome','quiet'],['slide.py','sync',str(R)],['check_branding.py'],['slide.py','check',str(R)]]:
     subprocess.run([sys.executable,str(R/'tools'/args[0]),*args[1:]],check=True,cwd=R)

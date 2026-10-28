@@ -2918,7 +2918,11 @@ SECTIONS.forEach((sec,si)=>{
     if(c.layout==='full'&&c.img){
       const src=c.img;let media;
       if(src.indexOf('IFRAME:')===0){const u=src.slice(7);const isRemote=/^https?:/i.test(u);media=`<iframe class="full-media${isRemote?'':' anim-frame'}" src="${u}" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen scrolling="no"></iframe>`;}
-      else if(/\.(mp4|webm)$/i.test(src)){media=`<video class="full-media" src="${src}" autoplay loop muted playsinline></video>`;}
+      else if(/\.(mp4|webm)$/i.test(src)){
+        const attr=v=>String(v||'').replace(/[&"<>]/g,ch=>({'&':'&amp;','"':'&quot;','<':'&lt;','>':'&gt;'}[ch]));
+        const label=attr(c.alt),credit=attr(c.credit),q=new URLSearchParams(location.search),still=q.has('shot')||q.has('print');
+        media=still&&c.poster?`<img class="full-media" src="${attr(c.poster)}" alt="${label}" title="${credit}">`:`<video class="full-media" src="${attr(src)}"${c.poster?` poster="${attr(c.poster)}"`:''} aria-label="${label}" title="${credit}" autoplay loop muted playsinline>${label}</video>`;
+      }
       else {media=`<img class="full-media" src="${src}" loading="lazy">`;}
       const ov=(c.title||c.subtitle)?`<div class="full-overlay">${c.title?`<h2>${c.title}</h2>`:''}${c.subtitle?`<div class="full-sub">${c.subtitle}</div>`:''}</div>`:'';
       s.innerHTML=`<div class="full-stage">${media}${ov}</div>`;
